@@ -1,4 +1,5 @@
 import AboutSolarSection from "@/components/home/AboutSolarSection";
+import BrandShowcase from "@/components/home/BrandShowcase";
 import FaqSection from "@/components/home/FaqSection";
 import HeroSection from "@/components/home/HeroSection";
 import LatestBlog from "@/components/home/LatestBlog";
@@ -15,6 +16,7 @@ export default function Home() {
       <ServicesOffer />
       <FaqSection />
       <LatestBlog />
+      <BrandShowcase />
       <TestimonialSection />
     </>
   );

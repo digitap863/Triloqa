@@ -24,7 +24,7 @@ const blogs = [
 
 const LatestBlog = () => {
   return (
-    <section className="w-full h-screen flex items-center bg-white font-sans sticky top-0">
+    <section className="w-full h-screen flex items-center bg-white font-sans ">
       <div className="mx-10 px-6 mt-16">
         <p className="text-[#1d8f2c] text-center mb-4 uppercase font-semibold tracking-wides text-base">
           Recent Articles

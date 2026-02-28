@@ -1,20 +1,22 @@
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { Play, ArrowRight } from "lucide-react";
 
-const AboutSolarSection = () => {
+const AboutSection = () => {
     return (
-        <section className="w-full bg-white h-screen flex items-center  font-sans ">
-            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <section className="w-full  h-screen flex items-center  font-sans relative">
+            <div className="h-full w-full absolute z-0">
+                <Image src={"/images/about/bg1.jpg"} fill alt="bg"/>
+            </div>
+            <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
 
                 {/* LEFT – IMAGE STACK */}
                 <div className="relative w-full h-[520px]">
 
-                    <div className="w-[400px] h-[415px] absolute top-20 left-16 border-3 border-[#1d8f2c]"></div>
 
                     {/* Main image */}
                     <div className="absolute top-0 left-0 w-[415px] h-[445px]">
                         <Image
-                            src="/images/home/ab1.jpg"
+                            src="/images/about/ab1.png"
                             alt="Solar worker"
                             fill
                             className="object-cover"
@@ -22,9 +24,9 @@ const AboutSolarSection = () => {
                     </div>
 
                     {/* Secondary image */}
-                    <div className="absolute bottom-0 right-1 w-[250px] h-[272px]">
+                    <div className="absolute bottom-0 right-1 w-[250px] h-[272px] border-[10px] border-white">
                         <Image
-                            src="/images/home/ab2.jpg"
+                            src="/images/about/ab2.jpg"
                             alt="Solar inspection"
                             fill
                             className="object-cover"
@@ -42,7 +44,7 @@ const AboutSolarSection = () => {
 
                     <h2 className="mt-4 text-4xl lg:text-[40px] font-bold text-[#232434] leading-tight">
                         Welcome To Triloqa <br />
-                        Power Energy System
+                        Power <span className="text-[#1d8f2c]">Energy System</span>
                     </h2>
 
                     <p className="mt-4 text-gray-600 max-w-xl leading-relaxed">
@@ -99,6 +101,6 @@ const AboutSolarSection = () => {
             </div>
         </section>
     );
-};
+}
 
-export default AboutSolarSection;
+export default AboutSection;

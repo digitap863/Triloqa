@@ -26,7 +26,7 @@ const FaqSection = () => {
     const [openIndex, setOpenIndex] = useState(0);
 
     return (
-        <section className="w-full h-screen flex items-center bg-white sticky top-0 font-sans">
+        <section className="w-full h-screen flex items-center bg-white relative font-sans">
             <div className="h-full w-full absolute top-0 left-0 flex z-0">
                 <div className="h-full w-[50%] relative">
                     <Image src={"/images/home/fl.png"} fill alt="left-image" />
@@ -35,7 +35,7 @@ const FaqSection = () => {
                     <Image src={"/images/home/fr.png"} fill alt="right-image" />
                 </div>
             </div>
-            <div className="max-w-7xl mt-20 mx-auto grid grid-cols-1 lg:grid-cols-2 relative z-10">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 relative z-10">
 
 
                 {/* LEFT IMAGE */}

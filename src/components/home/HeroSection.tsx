@@ -4,15 +4,15 @@ import Link from "next/link";
 
 const HeroSection = () => {
     return (
-        <div className="min-h-screen sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-screen w-full relative md:sticky top-0">
+        <div className="min-h-screen sm:min-h-[70vh] md:min-h-[80vh] lg:min-h-screen w-full relative">
             <Image
-                src="/images/home/hero-12.jpg"
+                src="/images/home/hero1.jpg"
                 alt="Hero"
                 fill
                 className="absolute top-0 left-0 z-0 hidden md:block"
             />
             <Image
-                src="/images/home/hero-12.jpg"
+                src="/images/home/hero1.jpg"
                 alt="Hero"
                 fill
                 className="absolute top-0 left-0 z-0 md:hidden block object-cover"
