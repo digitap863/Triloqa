@@ -9,13 +9,7 @@ const HeroSection = () => {
                 src="/images/home/hero1.jpg"
                 alt="Hero"
                 fill
-                className="absolute top-0 left-0 z-0 hidden md:block"
-            />
-            <Image
-                src="/images/home/hero1.jpg"
-                alt="Hero"
-                fill
-                className="absolute top-0 left-0 z-0 md:hidden block object-cover"
+                className="absolute object-cover top-0 left-0 z-0"
             />
             <div className="h-full w-full absolute bg-black/40 z-10">
 

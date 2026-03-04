@@ -7,6 +7,7 @@ import NavLink from "./NavLink";
 
 const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [contactMenuOpen, setContactMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -21,7 +22,7 @@ const Navbar = () => {
         { name: "Home", path: "/" },
         { name: "About", path: "/about" },
         { name: "Services", path: "/services" },
-        { name: "Blog", path: "/blog" },
+        { name: "Blog", path: "/blogs" },
         { name: "Contact", path: "/contactus" },
     ];
 
@@ -76,7 +77,7 @@ const Navbar = () => {
                             <div className="flex items-center gap-4">
                                 <button
                                     className="text-[#1D8F2C]"
-                                    onClick={() => setMobileMenuOpen(true)}
+                                    onClick={() => setContactMenuOpen(true)}
                                 >
                                     <Menu size={24} />
                                 </button>
@@ -90,6 +91,18 @@ const Navbar = () => {
             </div>
 
             {/* ================= MOBILE MENU (UNCHANGED LOGIC) ================= */}
+            <div
+                className={`fixed top-0 right-0 h-full  bg-[#F3F7FB] border-x-2 border-[#1D8F2C]  transition-transform duration-500 z-50 ${contactMenuOpen ? "translate-x-0" : "translate-x-full"
+                    }`}
+            >
+                <div className="flex justify-between items-center p-6">
+                    <button onClick={() => setContactMenuOpen(false)}>
+                        <X size={30} className="text-white" />
+                    </button>
+                </div>
+
+                
+            </div>
             <div
                 className={`fixed top-0 left-0 h-full w-full bg-[#0a0a0a] transition-transform duration-500 z-50 ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
                     }`}

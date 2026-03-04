@@ -15,43 +15,39 @@ const brands2 = [
     { src: "/images/home/brands/9.png", alt: "Brand 9" },
 ];
 
-// Duplicate for seamless infinite scroll
-const marqueeItems = [...brands, ...brands,...brands,...brands];
-const marqueeItems2 = [...brands2, ...brands2,...brands2,...brands2];
+const marqueeItems = [...brands, ...brands, ...brands, ...brands];
+const marqueeItems2 = [...brands2, ...brands2, ...brands2, ...brands2];
 
 const BrandShowcase = () => {
     return (
-        <section className="w-full pt-16 bg-white font-sans overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 mb-10">
-                {/* HEADER */}
+        <section className="w-full pt-10 sm:pt-14 lg:pt-16 pb-10 sm:pb-14 bg-white font-sans overflow-hidden">
+
+            {/* HEADER — Panels */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-8 lg:mb-10">
                 <div className="flex flex-col items-center text-center">
-                    <p className="uppercase text-[#1d8f2c] font-semibold tracking-widest text-sm">
+                    <p className="uppercase text-[#1d8f2c] font-semibold tracking-widest text-xs sm:text-sm">
                         The Brands that We Associates
                     </p>
-                    <h2 className="mt-4 text-4xl md:text-[40px] font-bold text-[#232434] leading-tight">
+                    <h2 className="mt-3 lg:mt-4 text-2xl sm:text-3xl lg:text-[40px] font-bold text-[#232434] leading-tight max-w-2xl">
                         We use tier 1 panels with 30 years performance warranty
                     </h2>
                 </div>
             </div>
 
-            {/* Marquee track */}
+            {/* MARQUEE 1 */}
             <div className="relative w-full">
-                {/* Left fade */}
-                <div className="pointer-events-none absolute left-0 top-0 h-full w-24 z-10"
-                    style={{ background: "linear-gradient(to right, white, transparent)" }}
-                />
-                {/* Right fade */}
-                <div className="pointer-events-none absolute right-0 top-0 h-full w-24 z-10"
-                    style={{ background: "linear-gradient(to left, white, transparent)" }}
-                />
+                <div className="pointer-events-none absolute left-0 top-0 h-full w-12 sm:w-20 lg:w-24 z-10"
+                    style={{ background: "linear-gradient(to right, white, transparent)" }} />
+                <div className="pointer-events-none absolute right-0 top-0 h-full w-12 sm:w-20 lg:w-24 z-10"
+                    style={{ background: "linear-gradient(to left, white, transparent)" }} />
 
-                <div className="flex gap-8 w-max animate-marquee">
+                <div className="flex gap-4 sm:gap-6 lg:gap-8 w-max animate-marquee">
                     {marqueeItems.map((brand, index) => (
                         <div
                             key={index}
-                            className="flex items-center justify-center w-52 h-24 bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-[#1d8f2c]/30 transition-all duration-300 px-6 shrink-0"
+                            className="flex items-center justify-center w-36 sm:w-44 lg:w-52 h-18 sm:h-20 lg:h-24 bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-[#1d8f2c]/30 transition-all duration-300 px-4 sm:px-5 lg:px-6 shrink-0"
                         >
-                            <div className="relative w-full h-12">
+                            <div className="relative w-full h-9 sm:h-11 lg:h-12">
                                 <Image
                                     src={brand.src}
                                     alt={brand.alt}
@@ -63,31 +59,30 @@ const BrandShowcase = () => {
                     ))}
                 </div>
             </div>
-            <div className="max-w-7xl mx-auto px-6 my-10">
-                {/* HEADER */}
+
+            {/* HEADER — Inverters */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 my-8 lg:my-10">
                 <div className="flex flex-col items-center text-center">
-                    <h2 className="mt-4 text-4xl md:text-[40px] font-bold text-[#232434] leading-tight">
-                       We use premium inverters upto 10 years warranty
+                    <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-bold text-[#232434] leading-tight max-w-2xl">
+                        We use premium inverters upto 10 years warranty
                     </h2>
                 </div>
             </div>
-            <div className="relative w-full">
-                {/* Left fade */}
-                <div className="pointer-events-none absolute left-0 top-0 h-full w-24 z-10"
-                    style={{ background: "linear-gradient(to right, white, transparent)" }}
-                />
-                {/* Right fade */}
-                <div className="pointer-events-none absolute right-0 top-0 h-full w-24 z-10"
-                    style={{ background: "linear-gradient(to left, white, transparent)" }}
-                />
 
-                <div className="flex gap-8 w-max animate-marquee">
+            {/* MARQUEE 2 */}
+            <div className="relative w-full">
+                <div className="pointer-events-none absolute left-0 top-0 h-full w-12 sm:w-20 lg:w-24 z-10"
+                    style={{ background: "linear-gradient(to right, white, transparent)" }} />
+                <div className="pointer-events-none absolute right-0 top-0 h-full w-12 sm:w-20 lg:w-24 z-10"
+                    style={{ background: "linear-gradient(to left, white, transparent)" }} />
+
+                <div className="flex gap-4 sm:gap-6 lg:gap-8 w-max animate-marquee">
                     {marqueeItems2.map((brand, index) => (
                         <div
                             key={index}
-                            className="flex items-center justify-center w-52 h-24 bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-[#1d8f2c]/30 transition-all duration-300 px-6 shrink-0"
+                            className="flex items-center justify-center w-36 sm:w-44 lg:w-52 h-18 sm:h-20 lg:h-24 bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-[#1d8f2c]/30 transition-all duration-300 px-4 sm:px-5 lg:px-6 shrink-0"
                         >
-                            <div className="relative w-full h-12">
+                            <div className="relative w-full h-9 sm:h-11 lg:h-12">
                                 <Image
                                     src={brand.src}
                                     alt={brand.alt}
@@ -100,7 +95,6 @@ const BrandShowcase = () => {
                 </div>
             </div>
 
-            {/* Inline keyframes */}
             <style jsx>{`
                 @keyframes marquee {
                     0%   { transform: translateX(0); }
