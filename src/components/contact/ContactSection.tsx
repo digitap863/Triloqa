@@ -6,10 +6,10 @@ import Image from "next/image";
 const ContactSection = () => {
   return (
     <section className="w-full bg-[#f4f4f4] py-20 font-sans">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16">
 
         {/* LEFT SIDE */}
-        <div className="flex flex-col">
+        <div className="flex flex-col order-2 md:order-1">
 
           {/* GREEN CONTACT CARD */}
           <div className="bg-[#1D8F2C] text-white p-10 space-y-8">
@@ -65,7 +65,7 @@ const ContactSection = () => {
         </div>
 
         {/* RIGHT SIDE - FORM */}
-        <div>
+        <div className="order-1 md:order-2">
           <h2 className="text-4xl font-bold text-gray-900">
             We&apos;d Love To Hear From!
           </h2>

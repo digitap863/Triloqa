@@ -120,4 +120,4 @@ const WhySection = () => {
     );
 };
 
-export default WhySection;
+export default WhySection;  
