@@ -15,8 +15,8 @@ const Footer = () => {
                             <Phone className="text-green-500" />
                         </div>
                         <div>
-                            <p className="text-sm text-white/70">Call Us 7/24</p>
-                            <p className="text-xl font-semibold">+208-555-0112</p>
+                            <p className="text-sm text-white/70">Call Us</p>
+                            <p className="text-xl font-semibold">+91 92078 56999</p>
                         </div>
                     </div>
 
@@ -38,7 +38,7 @@ const Footer = () => {
                         </div>
                         <div>
                             <p className="text-sm text-white/70">Location</p>
-                            <p className="text-xl font-semibold">4517 Washington Ave.</p>
+                            <p className="text-sm font-semibold">Second Floor, Statue Junction, Lotus City Centre, FACT Nagar, Thrippunithura, Kochi, Ernakulam, Kerala 682301</p>
                         </div>
                     </div>
 

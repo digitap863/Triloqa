@@ -20,8 +20,8 @@ const ContactSection = () => {
                 <Phone />
               </div>
               <div>
-                <p className="text-sm opacity-80">Call Us 7/24</p>
-                <p className="text-xl font-semibold">+208-555-0112</p>
+                <p className="text-sm opacity-80">Call Us</p>
+                <p className="text-xl font-semibold">+91 92078 56999</p>
               </div>
             </div>
 
@@ -42,12 +42,12 @@ const ContactSection = () => {
 
             {/* LOCATION */}
             <div className="flex items-center gap-6">
-              <div className="w-14 h-14 rounded-full border-2 border-dashed border-white flex items-center justify-center">
+              <div className="w-14 h-14 rounded-full border-2 border-dashed border-white flex items-center justify-center shrink-0">
                 <MapPin />
               </div>
               <div>
                 <p className="text-sm opacity-80">Location</p>
-                <p className="text-xl font-semibold">4517 Washington Ave.</p>
+                <p className="text-sm font-semibold">Second Floor, Statue Junction, Lotus City Centre, FACT Nagar, Thrippunithura, Kochi, Ernakulam, Kerala 682301</p>
               </div>
             </div>
 

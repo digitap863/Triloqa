@@ -3,10 +3,11 @@ import connect from "@/lib/db/connection";
 import Gallery from "@/lib/db/models/Gallery";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
+        const { id } = await params;
         await connect();
-        const item = await Gallery.findById(params.id);
+        const item = await Gallery.findById(id);
         if (!item) return NextResponse.json({ error: "Item not found" }, { status: 404 });
         return NextResponse.json(item);
     } catch (error: any) {
@@ -14,10 +15,11 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
+        const { id } = await params;
         await connect();
-        const item = await Gallery.findById(params.id);
+        const item = await Gallery.findById(id);
         if (!item) return NextResponse.json({ error: "Item not found" }, { status: 404 });
 
         // Delete from Cloudinary if image exists
@@ -30,17 +32,18 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
             }
         }
 
-        await Gallery.findByIdAndDelete(params.id);
+        await Gallery.findByIdAndDelete(id);
         return NextResponse.json({ message: "Deleted successfully" });
     } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
+        const { id } = await params;
         await connect();
-        const item = await Gallery.findById(params.id);
+        const item = await Gallery.findById(id);
         if (!item) return NextResponse.json({ error: "Item not found" }, { status: 404 });
 
         const formData = await req.formData();
@@ -72,7 +75,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
             imageUrl = uploadRes.secure_url;
         }
 
-        const updatedItem = await Gallery.findByIdAndUpdate(params.id, {
+        const updatedItem = await Gallery.findByIdAndUpdate(id, {
             title,
             category,
             image: imageUrl,

@@ -221,7 +221,7 @@ export default function AddBlogPage() {
                         <Link href="/admin/blogs" className="p-2 hover:bg-gray-100 rounded-full transition-colors">
                             <ArrowLeft size={20} className="text-gray-600" />
                         </Link>
-                        <div>
+                        <div> 
                             <h1 className="text-lg font-bold text-[#1b1e2e]">Write New Post</h1>
                             <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">Author Mode</p>
                         </div>

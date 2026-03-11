@@ -148,9 +148,12 @@ export default function AdminGalleryPage() {
                                                         />
                                                         {/* Overlay on hover */}
                                                         <div className="absolute inset-0 bg-[#1b1e2e]/0 group-hover:bg-[#1b1e2e]/40 transition-colors duration-300 flex items-center justify-center gap-2">
-                                                            <button className="opacity-0 group-hover:opacity-100 transition-opacity w-9 h-9 bg-white flex items-center justify-center text-[#1b1e2e] hover:bg-[#1D8F2C] hover:text-white transition-colors">
+                                                            <Link
+                                                                href={`/admin/gal/${item._id}/edit`}
+                                                                className="opacity-0 group-hover:opacity-100 transition-opacity w-9 h-9 bg-white flex items-center justify-center text-[#1b1e2e] hover:bg-[#1D8F2C] hover:text-white transition-colors"
+                                                            >
                                                                 <Pencil size={14} />
-                                                            </button>
+                                                            </Link>
                                                             <button
                                                                 onClick={() => handleDelete(item._id)}
                                                                 className="opacity-0 group-hover:opacity-100 transition-opacity w-9 h-9 bg-white flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-colors"
@@ -284,12 +287,13 @@ export default function AdminGalleryPage() {
                                                         {/* Actions */}
                                                         <td className="px-6 py-4">
                                                             <div className="flex items-center justify-end gap-1">
-                                                                <button
+                                                                <Link
+                                                                    href={`/admin/gal/${item._id}/edit`}
                                                                     className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-[#1b1e2e] hover:bg-gray-100 transition-colors"
                                                                     title="Edit"
                                                                 >
                                                                     <Pencil size={14} />
-                                                                </button>
+                                                                </Link>
                                                                 <button
                                                                     onClick={() => handleDelete(item._id)}
                                                                     className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors"

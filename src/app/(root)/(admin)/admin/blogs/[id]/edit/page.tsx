@@ -83,7 +83,11 @@ export default function EditBlogPage() {
     const [formData, setFormData] = useState({ title: "", slug: "", author: "Triloqa Team", date: "", tags: "", });
     const [sections, setSections] = useState<{ heading: string; body: string }[]>([]);
 
+    const [isLoaded, setIsLoaded] = useState(false);
+
     useEffect(() => {
+        if (!id || isLoaded) return;
+
         const load = async () => {
             const blog = await fetchBlogById(id);
             if (blog) {
@@ -96,10 +100,11 @@ export default function EditBlogPage() {
                 });
                 setImagePreview(blog.image);
                 setSections(blog.content || []);
+                setIsLoaded(true);
             }
         };
         load();
-    }, [id, fetchBlogById]);
+    }, [id, fetchBlogById, isLoaded]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

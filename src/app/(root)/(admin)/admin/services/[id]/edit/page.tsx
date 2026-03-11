@@ -52,18 +52,37 @@ export default function EditServicePage() {
         immediatelyRender: false,
     });
 
+    const [isLoaded, setIsLoaded] = useState(false);
+
     useEffect(() => {
+        if (!id || isLoaded) return;
+
         const load = async () => {
             const service = await fetchServiceById(id);
             if (service) {
                 setFormData({ title: service.title, slug: service.slug, });
                 setImg1Preview(service.img1);
                 setImg2Preview(service.img2);
-                editor?.commands.setContent(service.description);
+                setIsLoaded(true);
             }
         };
         load();
-    }, [id, fetchServiceById, editor]);
+    }, [id, fetchServiceById, isLoaded]);
+
+    useEffect(() => {
+        if (isLoaded && editor) {
+            // Re-fetch or just use a local state? 
+            // Better to re-fetch if we didn't store it, or just use the store if it saves currentService.
+            // But TipTap setContent only works when editor is ready.
+            const setContent = async () => {
+                const service = await fetchServiceById(id);
+                if (service) {
+                    editor.commands.setContent(service.description);
+                }
+            };
+            setContent();
+        }
+    }, [editor, isLoaded, id, fetchServiceById]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;

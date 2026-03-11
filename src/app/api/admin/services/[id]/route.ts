@@ -3,10 +3,11 @@ import connect from "@/lib/db/connection";
 import Service from "@/lib/db/models/Services";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
+        const { id } = await params;
         await connect();
-        const service = await Service.findById(params.id);
+        const service = await Service.findById(id);
         if (!service) return NextResponse.json({ error: "Service not found" }, { status: 404 });
         return NextResponse.json(service);
     } catch (error: any) {
@@ -14,10 +15,11 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
+        const { id } = await params;
         await connect();
-        const service = await Service.findById(params.id);
+        const service = await Service.findById(id);
         if (!service) return NextResponse.json({ error: "Service not found" }, { status: 404 });
 
         // Delete from Cloudinary
@@ -33,17 +35,18 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
             }
         }
 
-        await Service.findByIdAndDelete(params.id);
+        await Service.findByIdAndDelete(id);
         return NextResponse.json({ message: "Deleted successfully" });
     } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
+        const { id } = await params;
         await connect();
-        const service = await Service.findById(params.id);
+        const service = await Service.findById(id);
         if (!service) return NextResponse.json({ error: "Service not found" }, { status: 404 });
 
         const formData = await req.formData();
@@ -89,7 +92,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
             img2Url = uploadRes.secure_url;
         }
 
-        const updatedService = await Service.findByIdAndUpdate(params.id, {
+        const updatedService = await Service.findByIdAndUpdate(id, {
             title,
             description,
             img1: img1Url,

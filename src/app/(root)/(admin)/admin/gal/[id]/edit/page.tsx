@@ -20,7 +20,11 @@ export default function EditGalleryPage() {
         tags: "",
     });
 
+    const [isLoaded, setIsLoaded] = useState(false);
+
     useEffect(() => {
+        if (!id || isLoaded) return;
+
         const load = async () => {
             const item = await fetchGalleryItemById(id);
             if (item) {
@@ -30,10 +34,11 @@ export default function EditGalleryPage() {
                     tags: item.tags.join(", "),
                 });
                 setImagePreview(item.image);
+                setIsLoaded(true);
             }
         };
         load();
-    }, [id, fetchGalleryItemById]);
+    }, [id, fetchGalleryItemById, isLoaded]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;

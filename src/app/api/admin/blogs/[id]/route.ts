@@ -3,10 +3,11 @@ import connect from "@/lib/db/connection";
 import Blog from "@/lib/db/models/Blog";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
+        const { id } = await params;
         await connect();
-        const blog = await Blog.findById(params.id);
+        const blog = await Blog.findById(id);
         if (!blog) return NextResponse.json({ error: "Blog not found" }, { status: 404 });
         return NextResponse.json(blog);
     } catch (error: any) {
@@ -14,10 +15,11 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
     }
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
+        const { id } = await params;
         await connect();
-        const blog = await Blog.findById(params.id);
+        const blog = await Blog.findById(id);
         if (!blog) return NextResponse.json({ error: "Blog not found" }, { status: 404 });
 
         // Delete from Cloudinary if image exists
@@ -30,17 +32,18 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
             }
         }
 
-        await Blog.findByIdAndDelete(params.id);
+        await Blog.findByIdAndDelete(id);
         return NextResponse.json({ message: "Deleted successfully" });
     } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
     try {
+        const { id } = await params;
         await connect();
-        const blog = await Blog.findById(params.id);
+        const blog = await Blog.findById(id);
         if (!blog) return NextResponse.json({ error: "Blog not found" }, { status: 404 });
 
         const formData = await req.formData();
@@ -77,7 +80,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
         const tagsArray = tags ? tags.split(",").map(t => t.trim()) : blog.tags;
         const content = contentStr ? JSON.parse(contentStr) : blog.content;
 
-        const updatedBlog = await Blog.findByIdAndUpdate(params.id, {
+        const updatedBlog = await Blog.findByIdAndUpdate(id, {
             title,
             author,
             date,
