@@ -8,7 +8,7 @@ export interface BlogItem {
     author: string;
     date: string;
     image: string;
-    content: { heading: string; body: string }[];
+    content: string;
     tags: string[];
     createdAt: string;
     updatedAt: string;

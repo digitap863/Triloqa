@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useParams } from "next/navigation";
-import { ArrowLeft, Save, Upload, X, Plus, Trash2, Bold, Italic, Heading2, List, ListOrdered, Quote, Undo, Redo, RotateCcw } from "lucide-react";
+import { ArrowLeft, Save, Upload, X, Bold, Italic, Heading1, Heading2, List, ListOrdered, Quote, Undo, Redo, RotateCcw, Layers } from "lucide-react";
 
 // TipTap Imports
 import { useEditor, EditorContent } from "@tiptap/react";
@@ -16,6 +16,7 @@ const MenuBar = ({ editor }: { editor: any }) => {
     const buttons = [
         { icon: Bold, action: () => editor.chain().focus().toggleBold().run(), active: "bold" },
         { icon: Italic, action: () => editor.chain().focus().toggleItalic().run(), active: "italic" },
+        { icon: Heading1, action: () => editor.chain().focus().toggleHeading({ level: 1 }).run(), active: "heading", activeOptions: { level: 1 } },
         { icon: Heading2, action: () => editor.chain().focus().toggleHeading({ level: 2 }).run(), active: "heading", activeOptions: { level: 2 } },
         { icon: List, action: () => editor.chain().focus().toggleBulletList().run(), active: "bulletList" },
         { icon: ListOrdered, action: () => editor.chain().focus().toggleOrderedList().run(), active: "orderedList" },
@@ -40,39 +41,6 @@ const MenuBar = ({ editor }: { editor: any }) => {
     );
 };
 
-const ContentSection = ({ section, index, updateSection, removeSection }: { section: { heading: string; body: string }; index: number; updateSection: (idx: number, data: any) => void; removeSection: (idx: number) => void; }) => {
-    const editor = useEditor({
-        extensions: [StarterKit],
-        content: section.body,
-        immediatelyRender: false,
-        onUpdate: ({ editor }) => { updateSection(index, { body: editor.getHTML() }); },
-    });
-    return (
-        <div className="bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden mb-6 group">
-            <div className="flex items-center justify-between px-6 py-3 bg-gray-50 border-b border-gray-100">
-                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest">Section #{index + 1}</h3>
-                {index > 0 && (
-                    <button type="button" onClick={() => removeSection(index)} className="text-red-400 hover:text-red-600 transition-colors opacity-0 group-hover:opacity-100">
-                        <Trash2 size={16} />
-                    </button>
-                )}
-            </div>
-            <div className="p-6 space-y-4">
-                <div className="space-y-1">
-                    <label className="text-xs font-semibold text-gray-500 uppercase tracking-tighter">Section Heading</label>
-                    <input type="text" value={section.heading} onChange={(e) => updateSection(index, { heading: e.target.value })} placeholder="Section Title..." className="w-full text-lg font-bold text-gray-800 border-b border-gray-200 focus:border-[#1D8F2C] outline-none pb-1" />
-                </div>
-                <div className="border border-gray-200 rounded overflow-hidden shadow-inner">
-                    <MenuBar editor={editor} />
-                    <div className="p-4 min-h-[180px] tiptap-editor">
-                        <EditorContent editor={editor} />
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
 export default function EditBlogPage() {
     const router = useRouter();
     const { id } = useParams() as { id: string };
@@ -81,7 +49,12 @@ export default function EditBlogPage() {
     const [imagePreview, setImagePreview] = useState<string | null>(null);
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [formData, setFormData] = useState({ title: "", slug: "", author: "Triloqa Team", date: "", tags: "", });
-    const [sections, setSections] = useState<{ heading: string; body: string }[]>([]);
+
+    const editor = useEditor({
+        extensions: [StarterKit],
+        content: "<p>Loading post content...</p>",
+        immediatelyRender: false,
+    });
 
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -99,12 +72,16 @@ export default function EditBlogPage() {
                     tags: blog.tags.join(", "),
                 });
                 setImagePreview(blog.image);
-                setSections(blog.content || []);
+
+                if (editor) {
+                    editor.commands.setContent(blog.content);
+                }
+
                 setIsLoaded(true);
             }
         };
         load();
-    }, [id, fetchBlogById, isLoaded]);
+    }, [id, fetchBlogById, isLoaded, editor]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -122,10 +99,6 @@ export default function EditBlogPage() {
         }
     };
 
-    const updateSection = (idx: number, data: any) => { setSections(prev => { const next = [...prev]; next[idx] = { ...next[idx], ...data }; return next; }); };
-    const addSection = () => { setSections(prev => [...prev, { heading: "", body: "" }]); };
-    const removeSection = (idx: number) => { setSections(prev => prev.filter((_, i) => i !== idx)); };
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
@@ -134,7 +107,7 @@ export default function EditBlogPage() {
             data.append("author", formData.author);
             data.append("date", formData.date);
             data.append("tags", formData.tags);
-            data.append("content", JSON.stringify(sections));
+            data.append("content", editor?.getHTML() || "");
             if (imageFile) data.append("image", imageFile);
 
             await updateBlog(id, data);
@@ -181,19 +154,17 @@ export default function EditBlogPage() {
                             </div>
                         </div>
 
-                        <div className="space-y-2">
-                            <div className="flex items-center justify-between mb-4">
-                                <h2 className="text-sm font-bold text-[#1b1e2e] uppercase tracking-wider flex items-center gap-2">
-                                    <div className="w-1 h-4 bg-[#1D8F2C]" />
-                                    Dynamic Content
-                                </h2>
-                                <button type="button" onClick={addSection} className="text-[11px] font-bold text-[#1D8F2C] flex items-center gap-1 hover:underline">
-                                    <Plus size={14} /> Add Block
-                                </button>
+                        <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                            <label className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 block flex items-center gap-2">
+                                <Layers size={13} className="text-[#1D8F2C]" />
+                                Article Content
+                            </label>
+                            <div className="border border-gray-200 rounded overflow-hidden shadow-inner">
+                                <MenuBar editor={editor} />
+                                <div className="p-4 min-h-[400px] tiptap-editor">
+                                    <EditorContent editor={editor} />
+                                </div>
                             </div>
-                            {sections.map((section, idx) => (
-                                <ContentSection key={idx} index={idx} section={section} updateSection={updateSection} removeSection={removeSection} />
-                            ))}
                         </div>
                     </div>
 
@@ -222,16 +193,16 @@ export default function EditBlogPage() {
                         </div>
 
                         <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm space-y-6">
-                            <div className="space-y-1.5 font-bold">
+                            <div className="space-y-1.5 font-bold focus-within:text-[#1D8F2C]">
                                 <label className="text-[11px] text-gray-400 uppercase tracking-widest">Metadata Tags</label>
                                 <input type="text" name="tags" value={formData.tags} onChange={handleInputChange} placeholder="Solar, Renewable..." className="w-full px-3 py-2 border border-gray-200 rounded text-sm outline-none focus:border-[#1D8F2C]" />
                             </div>
                             <div className="space-y-4">
-                                <div className="space-y-1.5">
+                                <div className="space-y-1.5 focus-within:text-[#1D8F2C]">
                                     <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Post Author</label>
                                     <input type="text" name="author" value={formData.author} onChange={handleInputChange} className="w-full px-3 py-2 border border-gray-200 rounded text-sm outline-none focus:border-[#1D8F2C]" />
                                 </div>
-                                <div className="space-y-1.5">
+                                <div className="space-y-1.5 focus-within:text-[#1D8F2C]">
                                     <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Publish Date</label>
                                     <input type="date" name="date" value={formData.date} onChange={handleInputChange} className="w-full px-3 py-2 border border-gray-200 rounded text-sm outline-none focus:border-[#1D8F2C]" />
                                 </div>
@@ -242,7 +213,8 @@ export default function EditBlogPage() {
             </main>
 
             <style jsx global>{`
-                .tiptap-editor .ProseMirror { min-height: 150px; outline: none; }
+                .tiptap-editor .ProseMirror { min-height: 400px; outline: none; }
+                .tiptap-editor h1 { font-size: 1.875rem; font-weight: 800; margin-bottom: 1rem; color: #1b1e2e; }
                 .tiptap-editor h2 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; color: #1b1e2e; }
                 .tiptap-editor p { margin-bottom: 0.75rem; color: #4B5563; line-height: 1.6; }
                 .tiptap-editor blockquote { border-left: 4px solid #1D8F2C; padding-left: 1rem; font-style: italic; margin-bottom: 1rem; }

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useParams } from "next/navigation";
-import { ArrowLeft, Save, Upload, X, RotateCcw, Bold, Italic, Heading2, List, ListOrdered, Quote, Undo, Redo, Layers } from "lucide-react";
+import { ArrowLeft, Save, Upload, X, RotateCcw, Bold, Italic, Heading1, Heading2, List, ListOrdered, Quote, Undo, Redo, Layers } from "lucide-react";
 
 // TipTap Imports
 import { useEditor, EditorContent } from "@tiptap/react";
@@ -16,6 +16,7 @@ const MenuBar = ({ editor }: { editor: any }) => {
     const buttons = [
         { icon: Bold, action: () => editor.chain().focus().toggleBold().run(), active: "bold" },
         { icon: Italic, action: () => editor.chain().focus().toggleItalic().run(), active: "italic" },
+        { icon: Heading1, action: () => editor.chain().focus().toggleHeading({ level: 1 }).run(), active: "heading", activeOptions: { level: 1 } },
         { icon: Heading2, action: () => editor.chain().focus().toggleHeading({ level: 2 }).run(), active: "heading", activeOptions: { level: 2 } },
         { icon: List, action: () => editor.chain().focus().toggleBulletList().run(), active: "bulletList" },
         { icon: ListOrdered, action: () => editor.chain().focus().toggleOrderedList().run(), active: "orderedList" },
@@ -214,6 +215,7 @@ export default function EditServicePage() {
 
             <style jsx global>{`
                 .tiptap-editor .ProseMirror { min-height: 250px; outline: none; }
+                .tiptap-editor h1 { font-size: 1.875rem; font-weight: 800; margin-bottom: 1rem; color: #1b1e2e; }
                 .tiptap-editor h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: #1b1e2e; }
                 .tiptap-editor p { margin-bottom: 1rem; color: #4B5563; line-height: 1.6; }
             `}</style>

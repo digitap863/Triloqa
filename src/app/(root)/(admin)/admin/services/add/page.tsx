@@ -10,6 +10,7 @@ import {
     X,
     Save,
     Layers,
+    Heading1,
     Heading2,
     Bold,
     Italic,
@@ -32,7 +33,8 @@ const MenuBar = ({ editor }: { editor: any }) => {
     const buttons = [
         { icon: Bold, action: () => editor.chain().focus().toggleBold().run(), active: "bold", title: "Bold" },
         { icon: Italic, action: () => editor.chain().focus().toggleItalic().run(), active: "italic", title: "Italic" },
-        { icon: Heading2, action: () => editor.chain().focus().toggleHeading({ level: 2 }).run(), active: "heading", activeOptions: { level: 2 }, title: "Heading" },
+        { icon: Heading1, action: () => editor.chain().focus().toggleHeading({ level: 1 }).run(), active: "heading", activeOptions: { level: 1 }, title: "H1" },
+        { icon: Heading2, action: () => editor.chain().focus().toggleHeading({ level: 2 }).run(), active: "heading", activeOptions: { level: 2 }, title: "H2" },
         { icon: List, action: () => editor.chain().focus().toggleBulletList().run(), active: "bulletList", title: "Bullet List" },
         { icon: ListOrdered, action: () => editor.chain().focus().toggleOrderedList().run(), active: "orderedList", title: "Ordered List" },
         { icon: Quote, action: () => editor.chain().focus().toggleBlockquote().run(), active: "blockquote", title: "Blockquote" },
@@ -301,6 +303,7 @@ export default function AddServicePage() {
           min-height: 250px;
           outline: none;
         }
+        .tiptap-editor h1 { font-size: 1.875rem; font-weight: 800; margin-bottom: 1rem; color: #1b1e2e; }
         .tiptap-editor h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; color: #1b1e2e; }
         .tiptap-editor p { margin-bottom: 1rem; color: #4B5563; line-height: 1.6; }
         .tiptap-editor ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }

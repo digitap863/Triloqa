@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
         }
 
         const tags = tagsInput ? tagsInput.split(",").map(t => t.trim()).filter(t => t) : [];
-        const content = contentJson ? JSON.parse(contentJson) : [];
+        const content = contentJson || "";
 
         let imageUrl = "";
         if (file && typeof file !== "string") {

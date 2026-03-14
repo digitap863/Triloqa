@@ -1,79 +1,40 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import { useParams } from "next/navigation";
 import { CalendarDays, User, Tag, ArrowRight, ChevronRight } from "lucide-react";
-
-// ──────────────────────────────────────────────
-// Dummy data
-// ──────────────────────────────────────────────
-const blog = {
-    title: "Harnessing The Sun: The Future Of Solar Power In Modern Homes",
-    date: "February 15, 2025",
-    author: "Triloqa Team",
-    category: "Solar Energy",
-    image: "/images/home/b1.jpg",
-    content: [
-        {
-            heading: "Introduction",
-            body: `Solar power has rapidly evolved from a niche technology to a mainstream solution for household energy needs. With rising electricity costs and growing environmental awareness, more homeowners are making the switch to solar energy systems. The technology has become more efficient, affordable, and accessible than ever before.`,
-        },
-        {
-            heading: "Why Solar Power?",
-            body: `The sun provides an abundant and renewable source of energy that can power entire homes without producing harmful emissions. Modern solar panels can convert sunlight into electricity with efficiency rates exceeding 22%, and with battery storage solutions, homeowners can even power their homes through the night or on cloudy days.`,
-        },
-        {
-            heading: "Benefits of Going Solar",
-            body: `Installing solar panels offers numerous advantages — reduced electricity bills, increased property value, energy independence, and a significant reduction in your carbon footprint. Government subsidies and favorable net-metering policies have made the return on investment more attractive, with most systems paying for themselves within 5 to 7 years.`,
-        },
-        {
-            heading: "What to Expect During Installation",
-            body: `A typical residential solar installation takes 1 to 3 days depending on system size. After an initial site assessment, our certified engineers design a customized system layout. Panels are mounted on your roof, wiring is connected to your inverter and electrical panel, and the system is commissioned and tested before handover.`,
-        },
-        {
-            heading: "The Future is Bright",
-            body: `As battery storage technology matures and solar panel costs continue to fall, the adoption of solar power will only accelerate. Smart home integration, EV charging, and community solar programs are all converging to make solar energy the cornerstone of a cleaner, more resilient energy grid. The future of energy is solar — and it starts at your rooftop.`,
-        },
-    ],
-    tags: ["Solar", "Renewable Energy", "Green Living", "Home Improvement"],
-};
-
-const latestBlogs = [
-    {
-        date: "May, 2025",
-        title: "How To Choose The Right Solar Panels For Your Home.",
-        image: "/images/home/b1.jpg",
-        slug: "choose-right-solar-panels",
-    },
-    {
-        date: "July, 2025",
-        title: "DIY Solar: Can You Really Install Solar Panels Yourself?",
-        image: "/images/home/b1.jpg",
-        slug: "diy-solar-installation",
-    },
-    {
-        date: "Aug, 2025",
-        title: "Understanding Net Metering And How It Saves You Money.",
-        image: "/images/home/b1.jpg",
-        slug: "net-metering-guide",
-    },
-    {
-        date: "Sep, 2025",
-        title: "Top 5 Battery Storage Solutions For Solar Homes.",
-        image: "/images/home/b1.jpg",
-        slug: "top-battery-storage-solutions",
-    },
-];
+import { useUserBlogStore } from "@/stores/user/blogStore";
 
 // ──────────────────────────────────────────────
 // Component
 // ──────────────────────────────────────────────
 const BlogDetailContent = () => {
+    const { slug } = useParams();
+    const { currentBlog: blog, recentBlogs, loading, fetchBlogBySlug } = useUserBlogStore();
+
+    useEffect(() => {
+        if (slug) {
+            fetchBlogBySlug(slug as string);
+        }
+    }, [slug, fetchBlogBySlug]);
+
+    if (loading || !blog) {
+        return (
+            <div className="w-full min-h-[400px] flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#1d8f2c]"></div>
+            </div>
+        );
+    }
+
     return (
         <section className="w-full bg-white py-14 lg:py-20 font-sans">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
                 <div className="flex flex-col lg:flex-row gap-10 lg:gap-14">
 
                     {/* ────────── LEFT: Main Blog Content ────────── */}
-                    <article className="flex-1 min-w-0">
+                    <article data-aos="fade-right" data-aos-duration="1000" className="flex-1 min-w-0">
 
                         {/* Hero Image */}
                         <div className="relative w-full h-[260px] sm:h-[360px] lg:h-[460px] overflow-hidden">
@@ -96,10 +57,12 @@ const BlogDetailContent = () => {
                                 <User size={15} className="text-[#1d8f2c]" />
                                 {blog.author}
                             </span>
-                            <span className="flex items-center gap-1.5">
-                                <Tag size={15} className="text-[#1d8f2c]" />
-                                {blog.category}
-                            </span>
+                            {blog.tags && blog.tags.length > 0 && (
+                                <span className="flex items-center gap-1.5">
+                                    <Tag size={15} className="text-[#1d8f2c]" />
+                                    {blog.tags[0]}
+                                </span>
+                            )}
                         </div>
 
                         {/* Blog Heading */}
@@ -111,33 +74,36 @@ const BlogDetailContent = () => {
                         <div className="mt-5 mb-7 w-16 h-1 bg-[#1d8f2c]" />
 
                         {/* Blog Body */}
-                        <div className="space-y-8 text-[#585858] text-sm sm:text-base leading-relaxed">
-                            {blog.content.map((section, idx) => (
-                                <div key={idx}>
-                                    <h3 className="text-lg sm:text-xl font-semibold text-[#232434] mb-2">
-                                        {section.heading}
-                                    </h3>
-                                    <p>{section.body}</p>
-                                </div>
-                            ))}
+                        <div className="text-[#585858] text-sm sm:text-base leading-relaxed rich-text-content">
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html: typeof blog.content === 'string'
+                                        ? blog.content
+                                        : (Array.isArray(blog.content)
+                                            ? (blog.content as any).map((s: any) => `<h3>${s.heading}</h3><div>${s.body}</div>`).join('')
+                                            : "")
+                                }}
+                            />
                         </div>
 
                         {/* Tags */}
-                        <div className="mt-10 flex flex-wrap items-center gap-2">
-                            <span className="text-sm font-semibold text-[#232434] mr-1">Tags:</span>
-                            {blog.tags.map((tag, idx) => (
-                                <span
-                                    key={idx}
-                                    className="px-3 py-1 text-xs sm:text-sm border border-gray-200 text-[#585858] hover:border-[#1d8f2c] hover:text-[#1d8f2c] transition-colors cursor-pointer"
-                                >
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
+                        {blog.tags && blog.tags.length > 0 && (
+                            <div className="mt-10 flex flex-wrap items-center gap-2">
+                                <span className="text-sm font-semibold text-[#232434] mr-1">Tags:</span>
+                                {blog.tags.map((tag, idx) => (
+                                    <span
+                                        key={idx}
+                                        className="px-3 py-1 text-xs sm:text-sm border border-gray-200 text-[#585858] hover:border-[#1d8f2c] hover:text-[#1d8f2c] transition-colors cursor-pointer"
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
                     </article>
 
                     {/* ────────── RIGHT: Sidebar ────────── */}
-                    <aside className="w-full lg:w-[320px] xl:w-[360px] shrink-0">
+                    <aside data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200" className="w-full lg:w-[320px] xl:w-[360px] shrink-0">
 
                         {/* Latest Blog Posts */}
                         <div className="border border-gray-200 p-6">
@@ -149,9 +115,9 @@ const BlogDetailContent = () => {
                             </div>
 
                             <div className="space-y-5">
-                                {latestBlogs.map((item, idx) => (
+                                {recentBlogs.map((item, idx) => (
                                     <Link
-                                        key={idx}
+                                        key={item._id || idx}
                                         href={`/blogs/${item.slug}`}
                                         className="flex gap-4 group"
                                     >

@@ -11,7 +11,7 @@ const AboutSection = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-20 items-center relative z-10">
 
                 {/* LEFT – IMAGE STACK */}
-                <div className="relative w-full h-[280px] sm:h-[380px] md:h-[440px] lg:h-[520px]">
+                <div data-aos="fade-right" data-aos-duration="1000" className="relative w-full h-[280px] sm:h-[380px] md:h-[440px] lg:h-[520px]">
 
                     {/* Main image */}
                     <div className="absolute top-0 left-0 w-[72%] lg:w-[415px] h-[78%] lg:h-[445px]">
@@ -35,7 +35,7 @@ const AboutSection = () => {
                 </div>
 
                 {/* RIGHT – CONTENT */}
-                <div>
+                <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                     <p className="uppercase text-[#1d8f2c] tracking-wide font-semibold text-sm sm:text-base">
                         About Us
                     </p>

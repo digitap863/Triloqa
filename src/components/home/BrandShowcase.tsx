@@ -23,7 +23,7 @@ const BrandShowcase = () => {
         <section className="w-full pt-10 sm:pt-14 lg:pt-16 pb-10 sm:pb-14 bg-white font-sans overflow-hidden">
 
             {/* HEADER — Panels */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-8 lg:mb-10">
+            <div data-aos="fade-up" data-aos-duration="700" className="max-w-7xl mx-auto px-4 sm:px-6 mb-8 lg:mb-10">
                 <div className="flex flex-col items-center text-center">
                     <p className="uppercase text-[#1d8f2c] font-semibold tracking-widest text-xs sm:text-sm">
                         The Brands that We Associates
@@ -35,7 +35,7 @@ const BrandShowcase = () => {
             </div>
 
             {/* MARQUEE 1 */}
-            <div className="relative w-full">
+            <div data-aos="fade-up" data-aos-duration="700" data-aos-delay="100" className="relative w-full">
                 <div className="pointer-events-none absolute left-0 top-0 h-full w-12 sm:w-20 lg:w-24 z-10"
                     style={{ background: "linear-gradient(to right, white, transparent)" }} />
                 <div className="pointer-events-none absolute right-0 top-0 h-full w-12 sm:w-20 lg:w-24 z-10"
@@ -61,7 +61,7 @@ const BrandShowcase = () => {
             </div>
 
             {/* HEADER — Inverters */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 my-8 lg:my-10">
+            <div data-aos="fade-up" data-aos-duration="700" data-aos-delay="150" className="max-w-7xl mx-auto px-4 sm:px-6 my-8 lg:my-10">
                 <div className="flex flex-col items-center text-center">
                     <h2 className="text-2xl sm:text-3xl lg:text-[40px] font-bold text-[#232434] leading-tight max-w-2xl">
                         We use premium inverters upto 10 years warranty
@@ -70,7 +70,7 @@ const BrandShowcase = () => {
             </div>
 
             {/* MARQUEE 2 */}
-            <div className="relative w-full">
+            <div data-aos="fade-up" data-aos-duration="700" data-aos-delay="200" className="relative w-full">
                 <div className="pointer-events-none absolute left-0 top-0 h-full w-12 sm:w-20 lg:w-24 z-10"
                     style={{ background: "linear-gradient(to right, white, transparent)" }} />
                 <div className="pointer-events-none absolute right-0 top-0 h-full w-12 sm:w-20 lg:w-24 z-10"

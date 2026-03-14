@@ -41,7 +41,7 @@ const FaqSection = () => {
             <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 relative z-10 gap-0 lg:gap-6">
 
                 {/* LEFT IMAGE */}
-                <div className="hidden lg:block relative p-6 z-10">
+                <div data-aos="fade-right" data-aos-duration="800" className="hidden lg:block relative p-6 z-10">
                     <div className="relative w-full h-[520px]">
                         <Image
                             src="/images/home/faq.png"
@@ -53,7 +53,7 @@ const FaqSection = () => {
                 </div>
 
                 {/* RIGHT CONTENT */}
-                <div className="px-4 sm:px-8 lg:px-1 py-8 lg:py-14 relative z-10">
+                <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="100" className="px-4 sm:px-8 lg:px-1 py-8 lg:py-14 relative z-10">
                     <p className="text-[#1d8f2c] uppercase font-semibold tracking-wide text-sm sm:text-base">
                         See Our FAQs
                     </p>
@@ -77,9 +77,8 @@ const FaqSection = () => {
                                         className="w-full flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 text-left"
                                     >
                                         <span
-                                            className={`text-base sm:text-lg lg:text-xl font-semibold ${
-                                                isOpen ? "text-[#1d8f2c]" : "text-[#232434]"
-                                            }`}
+                                            className={`text-base sm:text-lg lg:text-xl font-semibold ${isOpen ? "text-[#1d8f2c]" : "text-[#232434]"
+                                                }`}
                                         >
                                             {faq.question}
                                         </span>
@@ -93,9 +92,8 @@ const FaqSection = () => {
 
                                     {/* ANSWER */}
                                     <div
-                                        className={`px-4 sm:px-6 overflow-hidden transition-all duration-300 ${
-                                            isOpen ? "max-h-40 pb-4 sm:pb-5" : "max-h-0"
-                                        }`}
+                                        className={`px-4 sm:px-6 overflow-hidden transition-all duration-300 ${isOpen ? "max-h-40 pb-4 sm:pb-5" : "max-h-0"
+                                            }`}
                                     >
                                         <p className="text-[#585858] leading-relaxed text-sm sm:text-base">
                                             {faq.answer}

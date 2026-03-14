@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Play, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const AboutSolarSection = () => {
     return (
@@ -7,7 +8,7 @@ const AboutSolarSection = () => {
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
                 {/* LEFT – IMAGE STACK */}
-                <div className="relative w-full h-[300px] sm:h-[380px] md:h-[440px] lg:h-[520px]">
+                <div data-aos="fade-right" data-aos-duration="800" className="relative w-full h-[300px] sm:h-[380px] md:h-[440px] lg:h-[520px]">
 
                     {/* Decorative border box */}
                     <div className="hidden sm:block absolute top-[10%] left-[8%] w-[70%] sm:w-[72%] lg:w-[400px] h-[75%] lg:h-[415px] border-[3px] border-[#1d8f2c]" />
@@ -34,7 +35,7 @@ const AboutSolarSection = () => {
                 </div>
 
                 {/* RIGHT – CONTENT */}
-                <div>
+                <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
                     <p className="uppercase text-[#1d8f2c] tracking-wide font-semibold text-sm sm:text-base">
                         About Us
                     </p>
@@ -88,10 +89,10 @@ const AboutSolarSection = () => {
 
                     {/* CTA */}
                     <div className="flex items-center gap-8">
-                        <button className="bg-[#1d8f2c] text-white px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-medium flex items-center gap-2 hover:bg-green-700 transition">
+                        <Link href="/about" className="bg-[#1d8f2c] text-white px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-medium flex items-center gap-2 hover:bg-green-700 transition">
                             Explore More
                             <ArrowRight size={18} />
-                        </button>
+                        </Link>
                     </div>
                 </div>
 

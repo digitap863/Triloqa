@@ -78,7 +78,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
         }
 
         const tagsArray = tags ? tags.split(",").map(t => t.trim()) : blog.tags;
-        const content = contentStr ? JSON.parse(contentStr) : blog.content;
+        const content = contentStr ?? blog.content;
 
         const updatedBlog = await Blog.findByIdAndUpdate(id, {
             title,
