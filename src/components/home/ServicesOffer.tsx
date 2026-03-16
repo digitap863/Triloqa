@@ -38,7 +38,7 @@ const ServicesOffer = () => {
     }
 
     return (
-        <section className="w-full min-h-screen flex items-center relative py-16 lg:py-0 lg:h-screen overflow-hidden font-sans">
+        <section className="w-full h-screen flex items-center relative py-16 lg:py-0 lg:h-screen overflow-hidden font-sans">
             <Image src="/images/home/sbg.jpg" alt="bg" fill className="object-cover" />
 
             <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6">
