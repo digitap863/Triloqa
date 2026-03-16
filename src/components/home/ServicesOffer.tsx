@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useUserServiceStore } from "@/stores/user/serviceStore";
-import { useSubServiceStore } from "@/stores/subServiceStore";
+import { useUserSubServiceStore } from "@/stores/user/subServiceStore";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
@@ -14,7 +14,7 @@ import type { Swiper as SwiperType } from "swiper";
 
 const ServicesOffer = () => {
     const { services, loading, fetchServices } = useUserServiceStore();
-    const { subServices, fetchSubServices } = useSubServiceStore();
+    const { subServices, fetchSubServices } = useUserSubServiceStore();
     const swiperRef = useRef<SwiperType>(null);
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);

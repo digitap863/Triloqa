@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { useUserServiceStore } from "@/stores/user/serviceStore";
-import { useSubServiceStore } from "@/stores/subServiceStore";
+import { useUserSubServiceStore } from "@/stores/user/subServiceStore";
 
 /* ─── Page ─── */
 const SubServiceDetailPage = () => {
@@ -16,27 +16,20 @@ const SubServiceDetailPage = () => {
     const { currentService: service, loading: serviceLoading, fetchServiceBySlug } = useUserServiceStore();
 
     /* ── Sub-services for this parent ── */
-    const { subServices, loading: subLoading, fetchSubServices } = useSubServiceStore();
+    const { 
+        currentSubService: currentSub, 
+        otherSubServices, 
+        loading: subLoading, 
+        fetchSubServiceBySlug 
+    } = useUserSubServiceStore();
 
     useEffect(() => {
         if (slug) fetchServiceBySlug(slug as string);
     }, [slug, fetchServiceBySlug]);
 
     useEffect(() => {
-        if (service?._id) fetchSubServices({ parentServiceId: service._id });
-    }, [service?._id, fetchSubServices]);
-
-    /* ── Derive current sub-service from the list ── */
-    const currentSub = useMemo(
-        () => subServices.find((s) => s.slug === subSlug) ?? null,
-        [subServices, subSlug]
-    );
-
-    /* ── Other sub-services (exclude current) ── */
-    const otherSubServices = useMemo(
-        () => subServices.filter((s) => s.slug !== subSlug),
-        [subServices, subSlug]
-    );
+        if (subSlug) fetchSubServiceBySlug(subSlug as string);
+    }, [subSlug, fetchSubServiceBySlug]);
 
     const isLoading = serviceLoading || subLoading || !service || !currentSub;
 

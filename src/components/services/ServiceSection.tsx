@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { useUserServiceStore } from "@/stores/user/serviceStore";
-import { useSubServiceStore } from "@/stores/subServiceStore";
+import { useUserSubServiceStore } from "@/stores/user/subServiceStore";
 
 const ServiceSection = () => {
     const { services, loading, fetchServices } = useUserServiceStore();
-    const { subServices, fetchSubServices } = useSubServiceStore();
+    const { subServices, fetchSubServices } = useUserSubServiceStore();
 
     useEffect(() => {
         fetchServices();

@@ -6,13 +6,13 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { ChevronRight, ArrowRight, CheckCircle2 } from "lucide-react";
 import { useUserServiceStore } from "@/stores/user/serviceStore";
-import { useSubServiceStore } from "@/stores/subServiceStore";
+import { useUserSubServiceStore } from "@/stores/user/subServiceStore";
 
 /* ─── Page ─── */
 const ServiceDetailPage = () => {
     const { slug } = useParams();
     const { currentService: service, otherServices, loading, fetchServiceBySlug } = useUserServiceStore();
-    const { subServices, fetchSubServices } = useSubServiceStore();
+    const { subServices, fetchSubServices } = useUserSubServiceStore();
 
     useEffect(() => {
         if (slug) {
