@@ -190,7 +190,7 @@ export default function AdminServicesPage() {
                                                                         {/* Sub-service count badge */}
                                                                         {subs !== null && subs.length > 0 && (
                                                                             <span className="text-[10px] text-[#1D8F2C] font-semibold bg-green-50 px-1.5 py-0.5 rounded-sm mt-0.5 inline-block">
-                                                                                {subs.length} sub-service{subs.length > 1 ? "s" : ""}
+                                                                                {subs.length} Types{subs.length > 1 ? "s" : ""}
                                                                             </span>
                                                                         )}
                                                                     </div>
@@ -279,7 +279,7 @@ export default function AdminServicesPage() {
                                                                             <div className="flex items-center gap-2">
                                                                                 <Layers size={13} className="text-[#1D8F2C]" />
                                                                                 <span className="text-xs font-bold text-[#1b1e2e] uppercase tracking-wider">
-                                                                                    Sub-Services
+                                                                                    Types
                                                                                 </span>
                                                                                 <span className="text-[10px] bg-[#1D8F2C]/10 text-[#1D8F2C] font-bold px-1.5 py-0.5 rounded-sm">
                                                                                     {subs?.length}

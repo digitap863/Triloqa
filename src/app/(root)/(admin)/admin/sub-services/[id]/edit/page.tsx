@@ -136,7 +136,7 @@ export default function EditSubServicePage() {
             if (imgFile) data.append("img", imgFile);
 
             await updateSubService(id, data);
-            alert("Sub-service updated successfully!");
+            alert("Type updated successfully!");
             router.push("/admin/services");
         } catch (error) {
             console.error(error);
@@ -149,7 +149,7 @@ export default function EditSubServicePage() {
             <div className="min-h-screen bg-[#F9FBFC] flex items-center justify-center">
                 <div className="flex flex-col items-center gap-3 text-gray-400">
                     <Loader2 size={32} className="animate-spin text-[#1D8F2C]" />
-                    <p className="text-sm font-medium">Loading sub-service...</p>
+                    <p className="text-sm font-medium">Loading type...</p>
                 </div>
             </div>
         );
@@ -166,7 +166,7 @@ export default function EditSubServicePage() {
                             <ArrowLeft size={20} className="text-gray-600" />
                         </Link>
                         <div>
-                            <h1 className="text-lg font-bold text-[#1b1e2e]">Edit Sub-Service</h1>
+                            <h1 className="text-lg font-bold text-[#1b1e2e]">Edit Type</h1>
                             <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">
                                 {parentTitle ? (
                                     <>Under: <span className="text-[#1D8F2C]">{parentTitle}</span></>
@@ -182,7 +182,7 @@ export default function EditSubServicePage() {
                         className="px-6 py-2 bg-[#1D8F2C] text-white text-sm font-bold rounded flex items-center gap-2 hover:bg-green-700 transition-all disabled:opacity-50 shadow-sm shadow-green-200"
                     >
                         <Save size={16} />
-                        {loading ? "Saving..." : "Update Sub-Service"}
+                        {loading ? "Saving..." : "Update Type"}
                     </button>
                 </div>
             </nav>
@@ -192,7 +192,7 @@ export default function EditSubServicePage() {
                 <div className="max-w-7xl mx-auto px-6 pt-6">
                     <div className="flex items-center gap-2 text-xs text-gray-500 bg-[#1D8F2C]/5 border border-[#1D8F2C]/10 px-4 py-2.5 rounded-lg w-fit">
                         <Layers size={13} className="text-[#1D8F2C]" />
-                        <span>Editing sub-service under</span>
+                        <span>Editing type under</span>
                         <span className="font-bold text-[#1D8F2C]">{parentTitle}</span>
                     </div>
                 </div>
@@ -212,7 +212,7 @@ export default function EditSubServicePage() {
                                 value={formData.title}
                                 onChange={handleInputChange}
                                 className="w-full text-2xl md:text-3xl font-black text-[#1b1e2e] placeholder:text-gray-200 outline-none mb-4"
-                                placeholder="Sub-service title..."
+                                placeholder="Type title..."
                                 required
                             />
                             <div className="flex items-center gap-2 text-xs text-gray-400 bg-gray-50 px-3 py-1.5 rounded-md border border-gray-100 w-fit">
@@ -244,7 +244,7 @@ export default function EditSubServicePage() {
                         {/* Image Upload */}
                         <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
                             <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-                                Sub-Service Image
+                                Type Image
                             </h3>
                             <div className="relative aspect-[16/10] w-full rounded-lg border-2 border-dashed border-gray-200 overflow-hidden bg-gray-50 group">
                                 {imgPreview ? (

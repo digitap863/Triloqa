@@ -129,11 +129,11 @@ export default function AddSubServicePage() {
 
             await addSubService(data);
 
-            alert("Sub-service added successfully!");
+            alert("Type added successfully!");
             router.push("/admin/services");
         } catch (error) {
             console.error("Submission failed:", error);
-            alert("Failed to add sub-service. Please try again.");
+            alert("Failed to add type. Please try again.");
         }
     };
 
@@ -147,7 +147,7 @@ export default function AddSubServicePage() {
                             <ArrowLeft size={20} className="text-gray-600" />
                         </Link>
                         <div>
-                            <h1 className="text-lg font-bold text-[#1b1e2e]">Add Sub-Service</h1>
+                            <h1 className="text-lg font-bold text-[#1b1e2e]">Add Types</h1>
                             <p className="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">
                                 Under:{" "}
                                 <span className="text-[#1D8F2C]">
@@ -162,7 +162,7 @@ export default function AddSubServicePage() {
                         className="px-6 py-2 bg-[#1D8F2C] text-white text-sm font-bold rounded flex items-center gap-2 hover:bg-green-700 transition-all disabled:opacity-50 shadow-sm shadow-green-200"
                     >
                         <Save size={16} />
-                        {loading ? "Saving..." : "Save Sub-Service"}
+                        {loading ? "Saving..." : "Save Type"}
                     </button>
                 </div>
             </nav>
@@ -171,7 +171,7 @@ export default function AddSubServicePage() {
             <div className="max-w-7xl mx-auto px-6 pt-6">
                 <div className="flex items-center gap-2 text-xs text-gray-500 bg-[#1D8F2C]/5 border border-[#1D8F2C]/10 px-4 py-2.5 rounded-lg w-fit">
                     <Layers size={13} className="text-[#1D8F2C]" />
-                    <span>This sub-service will be nested under</span>
+                    <span>This type will be nested under</span>
                     <span className="font-bold text-[#1D8F2C]">{parentService?.title || "parent service"}</span>
                 </div>
             </div>
@@ -205,7 +205,7 @@ export default function AddSubServicePage() {
                         <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
                             <label className="text-[11px] font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                                 <Layers size={13} className="text-[#1D8F2C]" />
-                                Sub-Service Description
+                                Type Description
                             </label>
                             <div className="border border-gray-200 rounded overflow-hidden">
                                 <MenuBar editor={editor} />
@@ -221,7 +221,7 @@ export default function AddSubServicePage() {
 
                         {/* Image Upload */}
                         <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-                            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Sub-Service Image</h3>
+                            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Type Image</h3>
                             <div className="relative aspect-[16/10] w-full rounded-lg border-2 border-dashed border-gray-200 overflow-hidden group bg-gray-50">
                                 {imgPreview ? (
                                     <>
@@ -250,12 +250,12 @@ export default function AddSubServicePage() {
                                 <Layers size={18} className="text-[#1D8F2C]" />
                             </div>
                             <div>
-                                <h4 className="text-sm font-bold text-green-900 mb-1 leading-none">Sub-Service</h4>
+                                <h4 className="text-sm font-bold text-green-900 mb-1 leading-none">Type</h4>
                                 <p className="text-[11px] text-green-700 leading-relaxed uppercase tracking-tight font-medium opacity-80">
                                     Title • Description • Image
                                 </p>
                                 <p className="text-[10px] text-green-600 leading-relaxed mt-1">
-                                    Sub-services appear nested under the parent service on the detail page.
+                                    Types appear nested under the parent service on the detail page.
                                 </p>
                             </div>
                         </div>

@@ -84,7 +84,7 @@ const ServiceSection = () => {
                                     {hasSubServices && (
                                         <div className="mt-4 pt-4 border-t border-gray-100">
                                             <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
-                                                Sub Services
+                                                Types
                                             </p>
                                             <ul className="space-y-1.5">
                                                 {relatedSubServices.map((sub) => (
