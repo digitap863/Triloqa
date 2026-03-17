@@ -44,7 +44,7 @@ const Navbar = () => {
             <div className={`bg-[#1b1e2e] text-white text-[15px] ${scrolled ? "hidden" : "hidden md:flex"}`}>
                 <div className="max-w-7xl mx-auto w-full flex items-center justify-between px-6 py-3">
                     <div className="flex items-center gap-6">
-                        <span>✉ info@example.com</span>
+                        <span>✉ triloqasales@gmail.com</span>
                         <span>📞 +91 92078 56999</span>
                     </div>
                     <div className="flex items-center gap-4 text-base font-medium">
@@ -165,7 +165,7 @@ const Navbar = () => {
                                 <div>
                                     <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Email Address</p>
                                     <p className="text-sm font-bold text-[#232434] hover:text-[#1D8F2C] transition-colors cursor-pointer">
-                                        Solar@Gmail.Com
+                                        triloqasales@gmail.com
                                     </p>
                                 </div>
                             </div>
@@ -183,15 +183,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className="p-8 border-t border-gray-100 bg-gray-50/50">
-                    <Link
-                        href="/contactus"
-                        className="flex items-center justify-center gap-3 w-full py-4 bg-[#1D8F2C] text-white font-bold rounded hover:bg-green-700 transition-all shadow-lg shadow-green-200 group"
-                    >
-                        Free Consultation
-                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                </div>
+                
             </div>
 
             {/* ================= MOBILE MENU OVERLAY ================= */}

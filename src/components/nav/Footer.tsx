@@ -37,12 +37,12 @@ const Footer = () => {
 
                     {/* EMAIL */}
                     <div className="flex items-center gap-5 md:border-x md:border-white/10 md:px-10">
-                        <div className="w-14 h-14 rounded-full border-2 border-dashed border-[#1D8F2C] flex items-center justify-center group hover:border-solid transition-all duration-300">
+                        <div className="w-14 h-14 rounded-full border-2 border-dashed border-[#1D8F2C] flex items-center justify-center group hover:border-solid transition-all duration-300 shrink-0">
                             <Mail size={24} className="text-[#1D8F2C] group-hover:scale-110 transition-transform" />
                         </div>
                         <div>
-                            <p className="text-sm text-white/70 font-medium">Make a Quote</p>
-                            <p className="text-xl font-bold hover:text-[#1D8F2C] transition-colors cursor-pointer text-nowrap">Solar@Gmail.Com</p>
+                            <p className="text-sm text-white/70 font-medium">Mail Us</p>
+                            <p className="text-xl font-bold hover:text-[#1D8F2C] transition-colors cursor-pointer text-nowrap">triloqasales@gmail.com</p>
                         </div>
                     </div>
 

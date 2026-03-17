@@ -74,8 +74,8 @@ const ContactSection = () => {
                 <Mail />
               </div>
               <div>
-                <p className="text-sm opacity-80 font-medium">Make a Quote</p>
-                <p className="text-xl font-bold">Solar@Gmail.Com</p>
+                <p className="text-sm opacity-80 font-medium">Mail Us</p>
+                <p className="text-xl font-bold">triloqasales@gmail.com</p>
               </div>
             </div>
 
