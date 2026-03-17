@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     // Email options
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: [`dryadflc@gmail.com`],
+      to: [`triloqasales@gmail.com`],
       replyTo: email,
       subject: `Contact Form: Message from ${name}`,
       html: `
