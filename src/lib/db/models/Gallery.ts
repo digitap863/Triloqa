@@ -3,6 +3,8 @@ import mongoose, { Schema, model, models, Document } from "mongoose";
 export interface IGallery extends Document {
     title: string;
     image: string;
+    video: string;
+    mediaType: "image" | "video";
     category: string;
     date: string;
     tags: string[];
@@ -18,7 +20,19 @@ const GallerySchema = new Schema<IGallery>(
         },
         image: {
             type: String,
-            required: true,
+            default: "",
+            required: false,
+        },
+        video: {
+            type: String,
+            default: "",
+            required: false,
+        },
+        mediaType: {
+            type: String,
+            enum: ["image", "video"],
+            default: "image",
+            required: false,
         },
         category: {
             type: String,
@@ -38,4 +52,9 @@ const GallerySchema = new Schema<IGallery>(
     }
 );
 
-export default models.Gallery || model<IGallery>("Gallery", GallerySchema);
+// This ensures the model is updated if we change the schema in development
+if (models.Gallery) {
+    delete (mongoose as any).models.Gallery;
+}
+
+export default model<IGallery>("Gallery", GallerySchema);

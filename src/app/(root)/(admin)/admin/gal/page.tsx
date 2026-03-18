@@ -14,7 +14,8 @@ import {
     Calendar,
     Tag,
     Pencil,
-    Loader2
+    Loader2,
+    Video
 } from "lucide-react";
 import { useGalleryStore } from "@/stores/galleryStore";
 
@@ -74,7 +75,7 @@ export default function AdminGalleryPage() {
                         className="flex items-center gap-2 bg-[#1D8F2C] text-white text-sm font-semibold px-4 py-2.5 hover:bg-green-700 transition-colors"
                     >
                         <Plus size={15} />
-                        Upload Image
+                        Add Media
                     </Link>
                 </div>
             </header>
@@ -89,7 +90,7 @@ export default function AdminGalleryPage() {
                         <div className="flex items-center gap-2">
                             <Images size={15} className="text-[#1D8F2C]" />
                             <span className="text-sm font-bold text-[#1b1e2e] uppercase tracking-wider">
-                                All Images
+                                All Media
                             </span>
                             <span className="text-xs bg-[#1D8F2C]/10 text-[#1D8F2C] font-semibold px-2 py-0.5">
                                 {totalItems}
@@ -138,14 +139,30 @@ export default function AdminGalleryPage() {
                                                     key={item._id}
                                                     className="group relative bg-[#f8f8f8] overflow-hidden border border-gray-100 hover:border-[#1D8F2C]/30 transition-colors"
                                                 >
-                                                    {/* Image */}
-                                                    <div className="relative w-full h-44 overflow-hidden">
-                                                        <Image
-                                                            src={item.image}
-                                                            alt={item.title}
-                                                            fill
-                                                            className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                                        />
+                                                    {/* Media thumbnail */}
+                                                    <div className="relative w-full h-44 overflow-hidden bg-gray-900">
+                                                        {item.mediaType === "video" ? (
+                                                            <video
+                                                                src={item.video}
+                                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                                                muted
+                                                                preload="metadata"
+                                                            />
+                                                        ) : (
+                                                            <Image
+                                                                src={item.image}
+                                                                alt={item.title}
+                                                                fill
+                                                                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                                            />
+                                                        )}
+                                                        {/* Video badge */}
+                                                        {item.mediaType === "video" && (
+                                                            <span className="absolute top-2 left-2 flex items-center gap-1 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-0.5 rounded">
+                                                                <Video size={10} />
+                                                                VIDEO
+                                                            </span>
+                                                        )}
                                                         {/* Overlay on hover */}
                                                         <div className="absolute inset-0 bg-[#1b1e2e]/0 group-hover:bg-[#1b1e2e]/40 transition-colors duration-300 flex items-center justify-center gap-2">
                                                             <Link
@@ -196,7 +213,7 @@ export default function AdminGalleryPage() {
                                         <div className="py-20 text-center">
                                             <Images size={40} className="mx-auto text-gray-200 mb-3" />
                                             <p className="text-sm text-gray-400 font-medium">
-                                                No images found.
+                                                No media found.
                                             </p>
                                         </div>
                                     )}
@@ -213,7 +230,7 @@ export default function AdminGalleryPage() {
                                                     #
                                                 </th>
                                                 <th className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-gray-400 font-semibold">
-                                                    Image
+                                                    Media
                                                 </th>
 
                                                 <th className="text-left px-4 py-3 text-[11px] uppercase tracking-widest text-gray-400 font-semibold hidden lg:table-cell">
@@ -239,20 +256,41 @@ export default function AdminGalleryPage() {
                                                             {(page - 1) * ITEMS_PER_PAGE + idx + 1}
                                                         </td>
 
-                                                        {/* Image + title */}
+                                                        {/* Media + title */}
                                                         <td className="px-4 py-4">
                                                             <div className="flex items-center gap-3">
-                                                                <div className="w-16 h-11 shrink-0 overflow-hidden bg-gray-100 relative">
-                                                                    <Image
-                                                                        src={item.image}
-                                                                        alt={item.title}
-                                                                        fill
-                                                                        className="object-cover"
-                                                                    />
+                                                                <div className="w-16 h-11 shrink-0 overflow-hidden bg-gray-900 relative rounded">
+                                                                    {item.mediaType === "video" ? (
+                                                                        <>
+                                                                            <video
+                                                                                src={item.video}
+                                                                                className="w-full h-full object-cover"
+                                                                                muted
+                                                                                preload="metadata"
+                                                                            />
+                                                                            <span className="absolute inset-0 flex items-center justify-center">
+                                                                                <Video size={14} className="text-white/80" />
+                                                                            </span>
+                                                                        </>
+                                                                    ) : (
+                                                                        <Image
+                                                                            src={item.image}
+                                                                            alt={item.title}
+                                                                            fill
+                                                                            className="object-cover"
+                                                                        />
+                                                                    )}
                                                                 </div>
-                                                                <p className="font-semibold text-[#1b1e2e] group-hover:text-[#1D8F2C] transition-colors line-clamp-1 text-[13px]">
-                                                                    {item.title}
-                                                                </p>
+                                                                <div>
+                                                                    <p className="font-semibold text-[#1b1e2e] group-hover:text-[#1D8F2C] transition-colors line-clamp-1 text-[13px]">
+                                                                        {item.title}
+                                                                    </p>
+                                                                    {item.mediaType === "video" && (
+                                                                        <span className="text-[10px] text-[#1D8F2C] font-semibold flex items-center gap-0.5 mt-0.5">
+                                                                            <Video size={9}/> Video
+                                                                        </span>
+                                                                    )}
+                                                                </div>
                                                             </div>
                                                         </td>
 
@@ -310,7 +348,7 @@ export default function AdminGalleryPage() {
                                                     <td colSpan={6} className="px-6 py-16 text-center">
                                                         <Images size={40} className="mx-auto text-gray-200 mb-3" />
                                                         <p className="text-sm text-gray-400 font-medium">
-                                                            No images found.
+                                                            No media found.
                                                         </p>
                                                     </td>
                                                 </tr>

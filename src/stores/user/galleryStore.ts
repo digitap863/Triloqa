@@ -5,6 +5,8 @@ export interface GalleryItem {
     _id: string;
     title: string;
     image: string;
+    video: string;
+    mediaType: "image" | "video";
     category: string;
     date: string;
     tags: string[];

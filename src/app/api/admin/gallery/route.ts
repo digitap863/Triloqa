@@ -59,11 +59,27 @@ export async function POST(req: NextRequest) {
         const category = formData.get("category") as string;
         const date = formData.get("date") as string;
         const tagsInput = formData.get("tags") as string;
-        const file = formData.get("image") as File;
+        const mediaType = (formData.get("mediaType") as string) || "image";
+        const imageFile = formData.get("image") as File | null;
+        const videoFile = formData.get("video") as File | null;
 
-        if (!title || !category || !date || !file) {
+        if (!title || !category || !date) {
             return NextResponse.json(
-                { message: "Title, category, date, and image are required" },
+                { message: "Title, category, and date are required" },
+                { status: 400 }
+            );
+        }
+
+        if (mediaType === "image" && !imageFile) {
+            return NextResponse.json(
+                { message: "Image file is required for image type" },
+                { status: 400 }
+            );
+        }
+
+        if (mediaType === "video" && !videoFile) {
+            return NextResponse.json(
+                { message: "Video file is required for video type" },
                 { status: 400 }
             );
         }
@@ -71,14 +87,16 @@ export async function POST(req: NextRequest) {
         const tags = tagsInput ? tagsInput.split(",").map(t => t.trim()).filter(t => t) : [];
 
         let imageUrl = "";
+        let videoUrl = "";
 
-        if (file && typeof file !== "string") {
-            const bytes = await file.arrayBuffer();
+        // Upload image to Cloudinary
+        if (mediaType === "image" && imageFile && typeof imageFile !== "string") {
+            const bytes = await imageFile.arrayBuffer();
             const buffer = Buffer.from(bytes);
             
             const uploadResult = await new Promise<any>((resolve, reject) => {
                 const uploadStream = cloudinary.uploader.upload_stream(
-                    { folder: "Triloqa/Gallery", resource_type: "auto" },
+                    { folder: "Triloqa/Gallery", resource_type: "image" },
                     (error, result) => {
                         if (error) reject(error);
                         else if (result) resolve(result);
@@ -90,12 +108,33 @@ export async function POST(req: NextRequest) {
             imageUrl = uploadResult.secure_url;
         }
 
+        // Upload video to Cloudinary
+        if (mediaType === "video" && videoFile && typeof videoFile !== "string") {
+            const bytes = await videoFile.arrayBuffer();
+            const buffer = Buffer.from(bytes);
+            
+            const uploadResult = await new Promise<any>((resolve, reject) => {
+                const uploadStream = cloudinary.uploader.upload_stream(
+                    { folder: "Triloqa/Gallery", resource_type: "video" },
+                    (error, result) => {
+                        if (error) reject(error);
+                        else if (result) resolve(result);
+                        else reject(new Error("Upload failed"));
+                    }
+                );
+                uploadStream.end(buffer);
+            });
+            videoUrl = uploadResult.secure_url;
+        }
+
         const galleryItem = await Gallery.create({
             title,
             category,
             date,
             tags,
+            mediaType,
             image: imageUrl,
+            video: videoUrl,
         });
 
         return NextResponse.json(galleryItem, { status: 201 });

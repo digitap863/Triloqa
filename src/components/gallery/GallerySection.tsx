@@ -2,25 +2,25 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useUserGalleryStore } from "@/stores/user/galleryStore";
-import { X, Plus } from "lucide-react";
+import { useUserGalleryStore, GalleryItem } from "@/stores/user/galleryStore";
+import { X, Plus, Play } from "lucide-react";
 
 const GallerySection = () => {
     const { galleryItems, loading, fetchGallery } = useUserGalleryStore();
-    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
 
     useEffect(() => {
         fetchGallery();
     }, [fetchGallery]);
 
-    const openLightbox = (image: string) => {
-        setSelectedImage(image);
-        document.body.style.overflow = 'hidden';
+    const openLightbox = (item: GalleryItem) => {
+        setSelectedItem(item);
+        document.body.style.overflow = "hidden";
     };
 
     const closeLightbox = () => {
-        setSelectedImage(null);
-        document.body.style.overflow = 'auto';
+        setSelectedItem(null);
+        document.body.style.overflow = "auto";
     };
 
     return (
@@ -47,25 +47,46 @@ const GallerySection = () => {
                                 data-aos="fade-up"
                                 data-aos-delay={(index % 3) * 150}
                                 className="group relative border border-gray-200 p-4 sm:p-5 transition-shadow hover:shadow-lg cursor-pointer"
-                                onClick={() => openLightbox(item.image)}
+                                onClick={() => openLightbox(item)}
                             >
-                                <div className="relative h-[220px] sm:h-[240px] lg:h-[260px] overflow-hidden">
-                                    <Image
-                                        src={item.image}
-                                        alt={item.title}
-                                        fill
-                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
-                                    
-                                    {/* Link/Zoom Icon on Hover */}
-                                    <div className="absolute inset-0 bg-[#232434]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                        <div className="w-12 h-12 bg-[#1d8f2c] text-white flex items-center justify-center">
-                                            <Plus size={24} />
-                                        </div>
-                                    </div>
+                                <div className="relative h-[220px] sm:h-[240px] lg:h-[260px] overflow-hidden bg-gray-900">
+
+                                    {/* VIDEO card */}
+                                    {item.mediaType === "video" ? (
+                                        <>
+                                            <video
+                                                src={item.video}
+                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                muted
+                                                preload="metadata"
+                                            />
+                                            {/* Play button overlay */}
+                                            <div className="absolute inset-0 bg-[#232434]/30 group-hover:bg-[#232434]/50 transition-colors duration-300 flex items-center justify-center">
+                                                <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm border-2 border-white flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                                    <Play size={26} className="text-white fill-white ml-1" />
+                                                </div>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            {/* IMAGE card */}
+                                            <Image
+                                                src={item.image}
+                                                alt={item.title}
+                                                fill
+                                                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                            />
+                                            {/* Zoom Icon on Hover */}
+                                            <div className="absolute inset-0 bg-[#232434]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                                <div className="w-12 h-12 bg-[#1d8f2c] text-white flex items-center justify-center">
+                                                    <Plus size={24} />
+                                                </div>
+                                            </div>
+                                        </>
+                                    )}
 
                                     {/* Category Tag */}
-                                    <span className="absolute top-3 left-3 bg-white px-3 py-1.5 text-xs font-semibold text-[#232434] uppercase tracking-wider">
+                                    <span className="absolute top-3 left-3 bg-white px-3 py-1.5 text-xs font-semibold text-[#232434] uppercase tracking-wider z-10">
                                         {item.category}
                                     </span>
                                 </div>
@@ -77,7 +98,10 @@ const GallerySection = () => {
                                     {item.tags && item.tags.length > 0 && (
                                         <div className="mt-2 flex flex-wrap gap-2">
                                             {item.tags.map((tag, idx) => (
-                                                <span key={idx} className="text-[#585858] text-[10px] uppercase font-bold tracking-widest">
+                                                <span
+                                                    key={idx}
+                                                    className="text-[#585858] text-[10px] uppercase font-bold tracking-widest"
+                                                >
                                                     #{tag}
                                                 </span>
                                             ))}
@@ -96,27 +120,41 @@ const GallerySection = () => {
                 )}
             </div>
 
-            {/* Lightbox Modal */}
-            {selectedImage && (
-                <div 
+            {/* ─── LIGHTBOX MODAL ─── */}
+            {selectedItem && (
+                <div
                     className="fixed inset-0 z-[100] flex items-center justify-center bg-[#232434]/95 p-4 md:p-10"
                     onClick={closeLightbox}
                 >
-                    <button 
-                        className="absolute top-6 right-6 text-white hover:text-[#1d8f2c] transition-colors p-2"
+                    <button
+                        className="absolute top-6 right-6 text-white hover:text-[#1d8f2c] transition-colors p-2 z-10"
                         onClick={closeLightbox}
                     >
                         <X size={32} />
                     </button>
-                    
-                    <div className="relative w-full h-full max-w-5xl max-h-[85vh]" onClick={(e) => e.stopPropagation()}>
-                        <Image
-                            src={selectedImage}
-                            alt="Full size view"
-                            fill
-                            className="object-contain"
-                            priority
-                        />
+
+                    <div
+                        className="relative w-full max-w-5xl max-h-[85vh] flex items-center justify-center"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {selectedItem.mediaType === "video" ? (
+                            <video
+                                src={selectedItem.video}
+                                className="max-w-full max-h-[85vh] rounded-lg shadow-2xl"
+                                controls
+                                autoPlay
+                            />
+                        ) : (
+                            <div className="relative w-full h-full" style={{ minHeight: "60vh" }}>
+                                <Image
+                                    src={selectedItem.image}
+                                    alt={selectedItem.title}
+                                    fill
+                                    className="object-contain"
+                                    priority
+                                />
+                            </div>
+                        )}
                     </div>
                 </div>
             )}
