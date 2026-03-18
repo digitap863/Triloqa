@@ -32,6 +32,27 @@ const AboutSolarSection = () => {
                             className="object-cover"
                         />
                     </div>
+
+                    {/* Completed Homes Badge */}
+                    <div
+                        data-aos="zoom-in"
+                        data-aos-duration="800"
+                        data-aos-delay="300"
+                        className="absolute bottom-4 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:bottom-6 sm:right-[40%] lg:right-auto lg:left-[52%] lg:bottom-8 z-10 flex items-center gap-3 bg-white shadow-2xl px-4 py-3 sm:px-5 sm:py-4 rounded-md border-l-4 border-[#1d8f2c]"
+                        style={{ boxShadow: "0 8px 32px rgba(29,143,44,0.18)" }}
+                    >
+                        {/* Green pulsing circle */}
+                        <div className="relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#1d8f2c] shrink-0">
+                            <span className="absolute inline-flex h-full w-full rounded-full bg-[#1d8f2c] opacity-40 animate-ping" />
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7m-9 5v6h4v-6m-4 0H9m6 0h-2m2 0v6h-4v-6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p className="text-xl sm:text-2xl font-extrabold text-[#1d8f2c] leading-none">150+</p>
+                            <p className="text-[11px] sm:text-xs font-semibold text-gray-500 uppercase tracking-wide mt-0.5">Homes Completed</p>
+                        </div>
+                    </div>
                 </div>
 
                 {/* RIGHT – CONTENT */}

@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
         }
 
         const galleryItems = await Gallery.find(query)
-            .sort({ createdAt: -1 })
+            .sort({ createdAt: 1 })
             .skip(skip)
             .limit(limit);
 
