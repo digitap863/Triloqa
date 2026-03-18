@@ -42,7 +42,7 @@ const AboutSection = () => {
 
                     <h2 className="mt-3 lg:mt-4 text-2xl sm:text-3xl lg:text-[40px] font-bold text-[#232434] leading-tight">
                         Welcome To Triloqa <br />
-                        Power <span className="text-[#1d8f2c]">Energy System</span>
+                        Green <span className="text-[#1d8f2c]">Energy Solutions</span>
                     </h2>
 
                     <p className="mt-3 lg:mt-4 text-gray-600 max-w-xl leading-relaxed text-sm sm:text-base">

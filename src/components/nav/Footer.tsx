@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Phone, Mail, MapPin, ChevronRight, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronRight, Facebook, Twitter, Linkedin, Youtube, Instagram } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useUserServiceStore } from "@/stores/user/serviceStore";
@@ -22,21 +22,24 @@ const Footer = () => {
 
             {/* TOP CONTACT STRIP */}
             <div className="border-b border-white/10">
-                <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="max-w-7xl mx-auto px-6 py-10 flex md:flex-row flex-col justify-between gap-8">
 
                     {/* CALL */}
-                    <div className="flex items-center gap-5">
+                    <div className="flex items-center gap-5 flex-1">
                         <div className="w-14 h-14 rounded-full border-2 border-dashed border-[#1D8F2C] flex items-center justify-center group hover:border-solid transition-all duration-300">
                             <Phone size={24} className="text-[#1D8F2C] group-hover:scale-110 transition-transform" />
                         </div>
                         <div>
                             <p className="text-sm text-white/70 font-medium">Call Us</p>
                             <p className="text-xl font-bold hover:text-[#1D8F2C] transition-colors cursor-pointer">+91 92078 56999</p>
+                            <p className="text-sm text-white/70 font-medium">WhatsApp</p>
+                            <Link href="https://wa.me/919207856999" 
+                            target="_blank" className="text-xl font-bold hover:text-[#1D8F2C] transition-colors cursor-pointer">+91 92078 56999</Link>
                         </div>
                     </div>
 
                     {/* EMAIL */}
-                    <div className="flex items-center gap-5 md:border-x md:border-white/10 md:px-10">
+                    <div className="flex items-center gap-5 md:border-x md:border-white/10 md:px-10 flex-1">
                         <div className="w-14 h-14 rounded-full border-2 border-dashed border-[#1D8F2C] flex items-center justify-center group hover:border-solid transition-all duration-300 shrink-0">
                             <Mail size={24} className="text-[#1D8F2C] group-hover:scale-110 transition-transform" />
                         </div>
@@ -47,7 +50,7 @@ const Footer = () => {
                     </div>
 
                     {/* LOCATION */}
-                    <div className="flex items-center gap-5">
+                    <div className="flex items-center gap-5 flex-1">
                         <div className="w-14 h-14 rounded-full border-2 border-dashed border-[#1D8F2C] flex items-center justify-center shrink-0 group hover:border-solid transition-all duration-300">
                             <MapPin size={24} className="text-[#1D8F2C] group-hover:scale-110 transition-transform" />
                         </div>
@@ -83,14 +86,14 @@ const Footer = () => {
 
                     <div className="flex gap-4 mt-8">
                         {[
-                            { icon: <Facebook size={18} />, href: "#" },
-                            { icon: <Twitter size={18} />, href: "#" },
-                            { icon: <Linkedin size={18} />, href: "#" },
-                            { icon: <Youtube size={18} />, href: "#" },
+                            { icon: <Facebook size={18} />, href: "https://www.facebook.com/profile.php?id=61569413255958&mibextid=wwXIfr&rdid=8pldyn1Fk1AAxjUk&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DnK24p4cv%2F%3Fmibextid%3DwwXIfr#" },
+                            { icon: <Instagram size={18} />, href: "https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+                            { icon: <Youtube size={18} />, href: "https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
                         ].map((social, idx) => (
                             <Link
                                 key={idx}
                                 href={social.href}
+                                target="_blank"
                                 className="w-10 h-10 border border-white/10 flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:border-[#1D8F2C] hover:-translate-y-1 transition-all duration-300"
                             >
                                 {social.icon}

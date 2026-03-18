@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, Phone, Mail, ArrowRight, ChevronRight, MapPin, Facebook, Twitter, Linkedin, Youtube } from "lucide-react";
+import { Menu, X, Phone, Mail, ArrowRight, ChevronRight, MapPin, Facebook, Twitter, Linkedin, Youtube, Instagram, Folder, File, Notebook } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import NavLink from "./NavLink";
@@ -49,10 +49,9 @@ const Navbar = () => {
                     </div>
                     <div className="flex items-center gap-4 text-base font-medium">
                         <span className="text-white">Follow Us:</span>
-                        <Link href="#">f</Link>
-                        <Link href="#">x</Link>
-                        <Link href="#">in</Link>
-                        <Link href="#">▶</Link>
+                        <Link href="https://www.facebook.com/share/1DnK24p4cv/?mibextid=wwXIfr" target="_blank"><Facebook size={18} /></Link>
+                        <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><Instagram size={20} /></Link>
+                        <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><Youtube size={25} /></Link>
                     </div>
                 </div>
             </div>
@@ -67,16 +66,21 @@ const Navbar = () => {
                         </Link>
 
                         {/* Desktop Nav */}
-                        <nav className="hidden md:flex items-center gap-16">
+                        <nav className="hidden md:flex items-center">
                             {navLinks.map((link) => (
                                 <NavLink
                                     key={link.path}
                                     href={link.path}
-                                    className="text-[#232434] font-medium hover:text-green-600"
+                                    className="text-[#232434] font-medium hover:text-green-600 mx-8"
                                 >
                                     {link.name}
                                 </NavLink>
                             ))}
+                            <button>
+                                <Link href="/files/Triloqa Brochure.pdf" target="_blank" className="flex gap-1 items-center text-white bg-[#1d8f2c] py-3 px-4 font-semibold mr-6">
+                                    Broucher <span><Notebook size={16} /></span>
+                                </Link>
+                            </button>
                             <button
                                 className="text-[#1D8F2C]"
                                 onClick={() => setContactMenuOpen(true)}
@@ -84,6 +88,7 @@ const Navbar = () => {
                                 <Menu size={24} />
                             </button>
                         </nav>
+
 
                         {/* Mobile Hamburger */}
                         <button
@@ -183,7 +188,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                
+
             </div>
 
             {/* ================= MOBILE MENU OVERLAY ================= */}

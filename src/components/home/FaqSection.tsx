@@ -6,20 +6,20 @@ import { ChevronsDown, ChevronsRight } from "lucide-react";
 
 const faqs = [
     {
-        question: "How To Use Solar?",
+        question: "How Does a Solar Power System Work?",
         answer:
-            "There are many variations of passages Lorem Ipsum but the majority have suffered alteration in some form, by injected humor.",
+            "Solar panels convert sunlight into electricity, which is then used to power your home or business."
     },
     {
-        question: "What Services Does You Offer?",
+        question: "What Types of Solar Systems Do You Offer?",
         answer:
-            "We provide solar installation, maintenance, consulting, and energy optimization services for homes and businesses.",
+            "We offer on-grid, off-grid, and hybrid solar systems based on your energy needs."
     },
     {
-        question: "How To Soft Launch Your Business?",
+        question: "Is Solar Energy Worth the Investment?",
         answer:
-            "Our experts help you plan, execute, and optimize your solar business launch efficiently.",
-    },
+            "Yes, solar reduces electricity bills and offers long-term savings with minimal maintenance."
+    }
 ];
 
 const FaqSection = () => {

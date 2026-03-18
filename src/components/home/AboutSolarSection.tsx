@@ -42,7 +42,7 @@ const AboutSolarSection = () => {
 
                     <h2 className="mt-3 lg:mt-4 text-2xl sm:text-3xl lg:text-[40px] font-bold text-[#232434] leading-tight">
                         Welcome To Triloqa <br />
-                        Power Energy System
+                        Green Energy Solutions
                     </h2>
 
                     <p className="mt-3 lg:mt-4 text-gray-600 max-w-xl leading-relaxed text-sm sm:text-base">
@@ -76,7 +76,7 @@ const AboutSolarSection = () => {
                             </div>
                             <div>
                                 <h4 className="font-semibold text-base lg:text-xl text-[#232434]">
-                                    BrightSun Support
+                                    Bright Sun Support
                                 </h4>
                                 <p className="text-xs sm:text-sm text-[#585858] mt-1">
                                     End-to-end customer support for a hassle-free solar energy experience.
