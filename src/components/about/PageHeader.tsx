@@ -7,15 +7,15 @@ const PageHeader = () => {
 
             {/* Background Image */}
             <Image
-                src="/images/about/b.jpg"
+                src="/images/b1.jpeg"
                 alt="About background"
                 fill
-                className="object-cover"
+                className="object-cover object-right"
                 priority
             />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-linear-to-br from-[#0E171A] via-#74AD1B]/90 to-[#74AD1B]/90" />
+            <div className="absolute md:hidden inset-0 bg-linear-to-br from-[#0E171A]/30 via-#74AD1B]/30 to-[#74AD1B]/30" />
             {/* Content */}
             <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 mt-14 sm:mt-16 lg:mt-20">
                 <h1 data-aos="fade-up" data-aos-duration="1000" className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">

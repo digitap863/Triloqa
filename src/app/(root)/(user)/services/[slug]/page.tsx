@@ -43,14 +43,14 @@ const ServiceDetailPage = () => {
             {/* ══════════════ BANNER ══════════════ */}
             <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden">
                 <Image
-                    src={"/images/about/b.jpg"}
+                    src={"/images/b2.jpeg"}
                     alt={service.title}
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-right"
                     priority
                 />
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-linear-to-br from-[#0E171A] via-#74AD1B]/90 to-[#74AD1B]/90" />
+                <div className="absolute md:hidden inset-0 bg-linear-to-br from-[#0E171A]/30 via-#74AD1B]/30 to-[#74AD1B]/30" />
 
                 {/* Content */}
                 <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 mt-14 sm:mt-16 lg:mt-20">
