@@ -33,8 +33,8 @@ const Footer = () => {
                             <p className="text-sm text-white/70 font-medium">Call Us</p>
                             <p className="text-xl font-bold hover:text-[#1D8F2C] transition-colors cursor-pointer">+91 92078 56999</p>
                             <p className="text-sm text-white/70 font-medium">WhatsApp</p>
-                            <Link href="https://wa.me/919207856999" 
-                            target="_blank" className="text-xl font-bold hover:text-[#1D8F2C] transition-colors cursor-pointer">+91 92078 56999</Link>
+                            <Link href="https://wa.me/917306377934" 
+                            target="_blank" className="text-xl font-bold hover:text-[#1D8F2C] transition-colors cursor-pointer">+91 7306377934</Link>
                         </div>
                     </div>
 

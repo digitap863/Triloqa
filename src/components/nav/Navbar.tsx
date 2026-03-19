@@ -78,7 +78,7 @@ const Navbar = () => {
                             ))}
                             <button>
                                 <Link href="/files/Triloqa Brochure.pdf" target="_blank" className="flex gap-1 items-center text-white bg-[#1d8f2c] py-3 px-4 font-semibold mr-6">
-                                    Broucher <span><Notebook size={16} /></span>
+                                    Brochure <span><Notebook size={16} /></span>
                                 </Link>
                             </button>
                             <button
@@ -180,10 +180,9 @@ const Navbar = () => {
                     <div className="mt-12">
                         <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Follow Us</h4>
                         <div className="flex gap-3">
-                            <Link href="#" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Facebook size={18} /></Link>
-                            <Link href="#" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Twitter size={18} /></Link>
-                            <Link href="#" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Linkedin size={18} /></Link>
-                            <Link href="#" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Youtube size={18} /></Link>
+                            <Link href="https://www.facebook.com/share/1DnK24p4cv/?mibextid=wwXIfr" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Facebook size={18} /></Link>
+                            <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Instagram size={18} /></Link>
+                            <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Youtube size={18} /></Link>
                         </div>
                     </div>
                 </div>
@@ -240,12 +239,12 @@ const Navbar = () => {
                     {/* CTA */}
                     <div className="px-5 pt-6">
                         <Link
-                            href="/contactus"
+                            href="/files/Triloqa Brochure.pdf"
+                            target="_blank"
                             onClick={() => setMobileMenuOpen(false)}
                             className="flex items-center justify-center gap-2 bg-[#1D8F2C] text-white text-sm font-semibold px-5 py-3 hover:bg-green-700 transition-colors"
                         >
-                            Get a Free Quote
-                            <ArrowRight size={14} />
+                            Brochure <span><Notebook size={16} /></span>
                         </Link>
                     </div>
                 </nav>
@@ -254,24 +253,18 @@ const Navbar = () => {
                 <div className="border-t border-white/10 px-5 py-5 space-y-3">
                     <a href="tel:+2086660112" className="flex items-center gap-3 text-white/55 hover:text-white text-sm transition-colors">
                         <Phone size={14} className="text-[#1D8F2C] shrink-0" />
-                        +208-666-0112
+                        +91 92078 56999
                     </a>
-                    <a href="mailto:info@example.com" className="flex items-center gap-3 text-white/55 hover:text-white text-sm transition-colors">
+                    <a href="mailto:triloqasales@gmail.com" className="flex items-center gap-3 text-white/55 hover:text-white text-sm transition-colors">
                         <Mail size={14} className="text-[#1D8F2C] shrink-0" />
-                        info@example.com
+                        triloqasales@gmail.com
                     </a>
 
                     {/* Social row */}
                     <div className="flex items-center gap-2 pt-1">
-                        {["f", "x", "in", "▶"].map((icon, i) => (
-                            <Link
-                                key={i}
-                                href="#"
-                                className="w-7 h-7 border border-white/15 flex items-center justify-center text-white/40 hover:border-[#1D8F2C] hover:text-[#1D8F2C] text-xs transition-colors"
-                            >
-                                {icon}
-                            </Link>
-                        ))}
+                            <Link href="https://www.facebook.com/share/1DnK24p4cv/?mibextid=wwXIfr" target="_blank" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Facebook size={18} /></Link>
+                            <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Instagram size={18} /></Link>
+                            <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Youtube size={18} /></Link>
                     </div>
                 </div>
             </div>
