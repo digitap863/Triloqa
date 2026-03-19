@@ -56,7 +56,7 @@ const Footer = () => {
                         </div>
                         <div>
                             <p className="text-sm text-white/70 font-medium">Location</p>
-                            <p className="text-sm font-semibold leading-relaxed">Second Floor, Statue Junction, Lotus City Centre, FACT Nagar, Thrippunithura, Kochi, Ernakulam, Kerala 682301</p>
+                            <p className="text-sm font-semibold leading-relaxed">Second Floor, Lotus City Centre, Statue Junction, FACT Nagar, Thrippunithura, Kochi, Ernakulam, Kerala 682301</p>
                         </div>
                     </div>
 
@@ -81,7 +81,7 @@ const Footer = () => {
                     </div>
 
                     <p className="text-white/70 mt-6 leading-relaxed italic">
-                        "Brighten Your home, Lighten your bill"
+                        &quot;Brighten Your home, Lighten your bill&quot;
                     </p>
 
                     <div className="flex gap-4 mt-8">

@@ -10,7 +10,7 @@ const PageHeader = () => {
                 src="/images/b2.jpeg"
                 alt="Services background"
                 fill
-                className="object-cover"
+                className="object-cover object-right"
                 priority
             />
 
