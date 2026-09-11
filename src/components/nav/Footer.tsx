@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Phone, Mail, MapPin, ChevronRight, Facebook, Twitter, Linkedin, Youtube, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronRight, Facebook, Youtube, Instagram } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useUserServiceStore } from "@/stores/user/serviceStore";
@@ -202,7 +202,7 @@ const Footer = () => {
             {/* COPYRIGHT */}
             <div className="border-t border-white/5 bg-[#23232C]">
                 <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:row items-center justify-between gap-4 text-sm text-white/50">
-                    <Link href={'https://www.tapclone.in/'}>© {new Date().getFullYear()} <span className="text-[#1D8F2C] font-bold">Tapclone</span>. All Rights Reserved.</Link>
+                    <p>© {new Date().getFullYear()} <span className="text-[#1D8F2C] font-bold"><Link href={'https://www.tapclone.in/'}>Tapclone</Link></span>. All Rights Reserved.</p>
                     <div className="flex gap-6">
                         <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
