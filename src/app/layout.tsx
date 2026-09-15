@@ -32,6 +32,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Triloqa",
   description: "Triloqa",
+  verification: {
+    google: "krEJUK030Rrgf3_xNMwi7oBMuXMUHEpI7NJs78uPI38",
+  },
 };
 
 export default function RootLayout({
@@ -41,6 +44,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-x-hidden">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="krEJUK030Rrgf3_xNMwi7oBMuXMUHEpI7NJs78uPI38"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${montserratAlternates.variable} antialiased overflow-x-hidden`}
       >
