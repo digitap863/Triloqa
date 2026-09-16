@@ -31,6 +31,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.triloqaenergy.com"),
   title: "Triloqa",
   description: "Triloqa",
   verification: {
