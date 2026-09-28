@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { Phone, Mail, MapPin, ChevronRight, Facebook, Youtube, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronRight, Facebook, Instagram } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useUserServiceStore } from "@/stores/user/serviceStore";
@@ -88,7 +88,7 @@ const Footer = () => {
                         {[
                             { icon: <Facebook size={18} />, href: "https://www.facebook.com/profile.php?id=61569413255958&mibextid=wwXIfr&rdid=8pldyn1Fk1AAxjUk&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DnK24p4cv%2F%3Fmibextid%3DwwXIfr#" },
                             { icon: <Instagram size={18} />, href: "https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
-                            { icon: <Youtube size={18} />, href: "https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
+                           
                         ].map((social, idx) => (
                             <Link
                                 key={idx}

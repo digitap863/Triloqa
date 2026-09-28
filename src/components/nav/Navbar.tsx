@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, Phone, Mail, ArrowRight, ChevronRight, MapPin, Facebook, Twitter, Linkedin, Youtube, Instagram, Folder, File, Notebook } from "lucide-react";
+import { Menu, X, Phone, Mail, ChevronRight, MapPin, Facebook, Instagram, Notebook } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import NavLink from "./NavLink";
@@ -51,7 +51,7 @@ const Navbar = () => {
                         <span className="text-white">Follow Us:</span>
                         <Link href="https://www.facebook.com/share/1DnK24p4cv/?mibextid=wwXIfr" target="_blank"><Facebook size={18} /></Link>
                         <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><Instagram size={20} /></Link>
-                        <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><Youtube size={25} /></Link>
+                       
                     </div>
                 </div>
             </div>
@@ -182,7 +182,6 @@ const Navbar = () => {
                         <div className="flex gap-3">
                             <Link href="https://www.facebook.com/share/1DnK24p4cv/?mibextid=wwXIfr" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Facebook size={18} /></Link>
                             <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Instagram size={18} /></Link>
-                            <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Youtube size={18} /></Link>
                         </div>
                     </div>
                 </div>
@@ -264,7 +263,6 @@ const Navbar = () => {
                     <div className="flex items-center gap-2 pt-1">
                             <Link href="https://www.facebook.com/share/1DnK24p4cv/?mibextid=wwXIfr" target="_blank" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Facebook size={18} /></Link>
                             <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Instagram size={18} /></Link>
-                            <Link href="https://www.instagram.com/triloqa.solar?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" className="w-10 h-10 bg-[#1b1e2e] text-white flex items-center justify-center rounded-md hover:bg-[#1D8F2C] hover:-translate-y-1 transition-all"><Youtube size={18} /></Link>
                     </div>
                 </div>
             </div>
