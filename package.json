@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tiptap/extension-link": "^3.31.3",
     "@tiptap/pm": "^3.20.1",
     "@tiptap/react": "^3.20.1",
     "@tiptap/starter-kit": "^3.20.1",
@@ -20,6 +21,10 @@
     "mongoose": "^9.2.4",
     "next": "16.1.6",
     "nodemailer": "^8.0.2",
+    "prosemirror-dropcursor": "^1.8.3",
+    "prosemirror-model": "^1.25.11",
+    "prosemirror-state": "^1.4.4",
+    "prosemirror-view": "^1.42.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "swiper": "^12.1.2",

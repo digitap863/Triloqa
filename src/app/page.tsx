@@ -20,6 +20,16 @@ export const metadata: Metadata = {
     "solar company kochi",
     "solar installation kerala",
   ],
+  alternates: {
+    canonical: "https://www.triloqaenergy.com/",
+    languages: {
+      "en-in": "https://www.triloqaenergy.com/",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     type: "website",
     siteName: "Triloqa Energy",
